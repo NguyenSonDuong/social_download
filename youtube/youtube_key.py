@@ -1,20 +1,22 @@
 from enum import Enum
-from youtube_key import YoutubeKey
 class Option:
     def __init__(self):
 
         self.channel_url = ""
         self.video_type= YoutubeKey.VideoType.VIDEO
         self.video_sort= YoutubeKey.VideoSort.PHOBIEN
-        self.video_duration= YoutubeKey.VideoDuaration.ALLVIDEO
         self.video_quatity= YoutubeKey.VideoQuality.VideoFormat[0]
         self.output_path = "Downloads"
         self.count= -1
+
+        self.video_duration= YoutubeKey.VideoDuaration.ALLVIDEO
         self.API_KEY =  "AIzaSyC6XAJGYvbDHiLYFGpv8BpUz9PRSNwIQEA"
+
         pass
 
 class YoutubeKey:
-    
+    def __init__(self):
+        pass
     class VideoDuaration:
         ALLVIDEO = 1
         VIDEODURATION_20MINUTE = 2

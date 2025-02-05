@@ -8,7 +8,7 @@ from pytubefix import cipher
 from tqdm import tqdm  # Hiển thị tiến trình tải video
 import sys
 from message.message import Message
-from youtube_key import YoutubeKey, Option
+from youtube.youtube_key import YoutubeKey, Option
 
 # "AIzaSyC6XAJGYvbDHiLYFGpv8BpUz9PRSNwIQEA"
 class YoutubeServerTwo:

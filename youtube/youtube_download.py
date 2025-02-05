@@ -1,9 +1,10 @@
 import yt_dlp
 from enum import Enum
 import inspect
+import sys
 from message.message import Message
-from youtube_key import YoutubeKey
-from youtube_key import Option
+sys.path.append('.')
+from youtube.youtube_key import YoutubeKey, Option
 
 class Youtube:
     
@@ -29,11 +30,17 @@ class Youtube:
 
     def get_list_video(self):
         try:
+
             ydl_opts = {
-                'extract_flat': True,
                 'skip_download': True,
                 'quiet': True
             }
+            # ydl_opts = {'ignoreerrors': True,
+            #             'quiet': True,
+            #             'extract_flat': 'in_playlist',
+            #             'dump_single_json': True, 
+            #             'getcomments': True,
+            #             "outtmpl": "%(upload_date)s"}
 
             if self._prcess:
                 self._prcess(Message.NotificationType.NOTIFICATION, f"{Message.Youtube.message_get_info_channel_start}")
@@ -73,10 +80,10 @@ class Youtube:
             if self._prcess:
                 self._prcess(Message.NotificationType.ERROR, f"{Message.Youtube.message_get_info_channel_success}: Error: {e}")
         
-    def download_video(self, video_url, output_path, video_format = YoutubeKey.VideoFormat[0]):
+    def download_video(self, video_url):
         ydl_opts = {
-            'format': video_format,  
-            'outtmpl': f'{output_path}/%(title)s.%(ext)s',
+            'format': self.option.video_quatity,  
+            'outtmpl': f'{self.option.output_path}/%(title)s.%(ext)s',
             'progress_hooks': [self._download_hook]
         }
 
