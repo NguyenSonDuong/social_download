@@ -2,23 +2,10 @@ import yt_dlp
 from enum import Enum
 import inspect
 from message.message import Message
-
-class VideoSort(Enum):
-    PHOBIEN = 1
-    MOINHAT = 2
-    CUNHAT = 3
-class VideoType(Enum):
-    VIDEO = 1
-    SHORT = 2
-
+from youtube_key import YoutubeKey
 
 class Youtube:
-    VideoFormat = ["bestvideo+bestaudio"
-               ,"worst"
-               ,"bestvideo"
-               ,"bestaudio"
-               ,"worstvideo"
-               ,"worstaudio"]
+    
     _prcess = None
     def __init__(self, process = None):
         self._prcess = process
@@ -64,17 +51,17 @@ class Youtube:
             if channel_info['entries'] == None or  "entries" not in channel_info:
                 return []
             
-            if option['video_type'] == VideoType.SHORT and len(channel_info['entries'][1]['entries']) <=0:
+            if option['video_type'] == YoutubeKey.VideoType.SHORT and len(channel_info['entries'][1]['entries']) <=0:
                 return []
             
-            if option['video_type'] == VideoType.VIDEO and len(channel_info['entries'][0]['entries']) <=0:
+            if option['video_type'] == YoutubeKey.VideoType.VIDEO and len(channel_info['entries'][0]['entries']) <=0:
                 return []
             
-            videos = channel_info['entries'][1]['entries'] if option['video_type'] == VideoType.SHORT else channel_info['entries'][0]['entries']
+            videos = channel_info['entries'][1]['entries'] if option['video_type'] == YoutubeKey.VideoType.SHORT else channel_info['entries'][0]['entries']
 
-            if option['video_sort'] == VideoSort.PHOBIEN:
+            if option['video_sort'] == YoutubeKey.VideoSort.PHOBIEN:
                 videos = self.quick_sort_view(videos)
-            elif option['video_sort'] == VideoSort.CUNHAT:
+            elif option['video_sort'] == YoutubeKey.VideoSort.CUNHAT:
                 videos = videos[::-1]
             
             if int(option['count']) == -1:
@@ -85,7 +72,7 @@ class Youtube:
             if self._prcess:
                 self._prcess(Message.NotificationType.ERROR, f"{Message.Youtube.message_get_info_channel_success}: Error: {e}")
         
-    def download_video(self, video_url, output_path, video_format = VideoFormat[0]):
+    def download_video(self, video_url, output_path, video_format = YoutubeKey.VideoFormat[0]):
         ydl_opts = {
             'format': video_format,  
             'outtmpl': f'{output_path}/%(title)s.%(ext)s',

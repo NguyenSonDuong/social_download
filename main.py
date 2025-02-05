@@ -1,7 +1,8 @@
 import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'message'))
-from youtube.youtube_download import Youtube,  VideoSort, VideoType
+from youtube.youtube_download import Youtube
+from youtube.youtube_key import YoutubeKey
 
 
 def process(funtion_name, messgae):

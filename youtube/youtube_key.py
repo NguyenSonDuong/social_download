@@ -13,3 +13,11 @@ class YoutubeKey:
     class VideoType:
         VIDEO = 1
         SHORT = 2
+
+    class VideoQuality:
+        VideoFormat = ["bestvideo+bestaudio"
+               ,"worst"
+               ,"bestvideo"
+               ,"bestaudio"
+               ,"worstvideo"
+               ,"worstaudio"]
