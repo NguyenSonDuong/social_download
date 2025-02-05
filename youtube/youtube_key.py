@@ -10,7 +10,7 @@ class Option:
         self.video_quatity= YoutubeKey.VideoQuality.VideoFormat[0]
         self.output_path = "Downloads"
         self.count= -1
-
+        self.API_KEY =  "AIzaSyC6XAJGYvbDHiLYFGpv8BpUz9PRSNwIQEA"
         pass
 
 class YoutubeKey:
