@@ -4,3 +4,4 @@ moviepy>=1.0.0   # Nên kiểm tra phiên bản mới nhất trên PyPI
 requests>=2.30.0 # Nên kiểm tra phiên bản mới nhất trên PyPI
 selenium>=4.10.0 # Nên kiểm tra phiên bản mới nhất trên PyPI
 yt-dlp>=2025.1.26
+pytubefix>=8.12.
