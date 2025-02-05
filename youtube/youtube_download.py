@@ -3,16 +3,17 @@ from enum import Enum
 import inspect
 from message.message import Message
 from youtube_key import YoutubeKey
+from youtube_key import Option
 
 class Youtube:
     
     _prcess = None
-    def __init__(self, process = None):
+    def __init__(self, process = None, option = Option()):
         self._prcess = process
-        
+        self.option = option
         pass
 
-    def quick_sort_view(self, videos):
+    def _quick_sort_view(self, videos):
         try:
             if len(videos) <= 1:
                 return videos
@@ -26,7 +27,7 @@ class Youtube:
             raise
 
 
-    def get_list_video(self, option):
+    def get_list_video(self):
         try:
             ydl_opts = {
                 'extract_flat': True,
@@ -39,7 +40,7 @@ class Youtube:
             
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                 try:
-                    channel_info = ydl.extract_info(option["url"], download=False)
+                    channel_info = ydl.extract_info(self.option.channel_url, download=False)
                 except Exception as e:
                     if self._prcess:
                         self._prcess(Message.NotificationType.ERROR, f"{Message.Youtube.message_get_info_channel_success}: Error: {e}")
@@ -51,23 +52,23 @@ class Youtube:
             if channel_info['entries'] == None or  "entries" not in channel_info:
                 return []
             
-            if option['video_type'] == YoutubeKey.VideoType.SHORT and len(channel_info['entries'][1]['entries']) <=0:
+            if self.option.video_type == YoutubeKey.VideoType.SHORT and len(channel_info['entries'][1]['entries']) <=0:
                 return []
             
-            if option['video_type'] == YoutubeKey.VideoType.VIDEO and len(channel_info['entries'][0]['entries']) <=0:
+            if self.option.video_type == YoutubeKey.VideoType.VIDEO and len(channel_info['entries'][0]['entries']) <=0:
                 return []
             
-            videos = channel_info['entries'][1]['entries'] if option['video_type'] == YoutubeKey.VideoType.SHORT else channel_info['entries'][0]['entries']
+            videos = channel_info['entries'][1]['entries'] if self.option.video_type == YoutubeKey.VideoType.SHORT else channel_info['entries'][0]['entries']
 
-            if option['video_sort'] == YoutubeKey.VideoSort.PHOBIEN:
-                videos = self.quick_sort_view(videos)
-            elif option['video_sort'] == YoutubeKey.VideoSort.CUNHAT:
+            if self.option.video_sort == YoutubeKey.VideoSort.PHOBIEN :
+                videos = self._quick_sort_view(videos)
+            elif self.option.video_sort == YoutubeKey.VideoSort.CUNHAT:
                 videos = videos[::-1]
             
-            if int(option['count']) == -1:
+            if int(self.option.count) == -1:
                 return videos
             else:
-                return videos[0:int(option['count']):1]
+                return videos[0:int(self.option.count)]
         except e:
             if self._prcess:
                 self._prcess(Message.NotificationType.ERROR, f"{Message.Youtube.message_get_info_channel_success}: Error: {e}")
@@ -95,13 +96,13 @@ class Youtube:
         # elif d['status'] == 'downloading':
         #     print(f"Downloading {d['filename']} - {d['_percent_str']} complete")
 
-    def download_videos(self, videos, option=None):
+    def download_videos(self, videos):
         error_video = []
         success_video = []
         for video in videos:
             if self._prcess:
                 self._prcess(Message.NotificationType.NOTIFICATION, f"{Message.Youtube.message_get_info_channel_success}: {video['title']}")
-            if self.download_video(video["url"],option["output_path"]):
+            if self.download_video(video["url"],self.option.output_path):
                 success_video.append(video)
             else:
                 error_video.append(video)
