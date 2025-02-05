@@ -3,7 +3,7 @@ import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'message'))
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'youtube'))
 from youtube.youtube_download import Youtube
-from youtube.youtube_key import  Option
+from youtube.youtube_key import  Option, YoutubeKey
 from youtube.youtube_download_server_2 import YoutubeServerTwo
 
 def process(funtion_name, messgae):
@@ -67,7 +67,7 @@ Nhập lựa chọn của bạn:  """))
 "4". Audio chất lượng cao (Không có video)
 "5". Audio chất lượng thấp (Không có video)
 Nhập lựa chọn của bạn: """)
-    option.video_quatity = int(format)
+    option.video_quatity = YoutubeKey.VideoQuality.VideoFormat[int(format)]
     return option
 
 def DouyinDownload():

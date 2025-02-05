@@ -14,7 +14,7 @@ class Youtube:
         self.option = option
         pass
 
-    def _quick_sort_view(self, videos):
+    def quick_sort_view(self, videos):
         try:
             if len(videos) <= 1:
                 return videos
@@ -30,17 +30,12 @@ class Youtube:
 
     def get_list_video(self):
         try:
-
+            videos = []
             ydl_opts = {
-                'skip_download': True,
+                'extract_flat': True,  # Lấy thông tin mà không tải video
+                'skip_download': True,  # Bỏ qua bước tải video
                 'quiet': True
             }
-            # ydl_opts = {'ignoreerrors': True,
-            #             'quiet': True,
-            #             'extract_flat': 'in_playlist',
-            #             'dump_single_json': True, 
-            #             'getcomments': True,
-            #             "outtmpl": "%(upload_date)s"}
 
             if self._prcess:
                 self._prcess(Message.NotificationType.NOTIFICATION, f"{Message.Youtube.message_get_info_channel_start}")
@@ -59,16 +54,16 @@ class Youtube:
             if channel_info['entries'] == None or  "entries" not in channel_info:
                 return []
             
-            if self.option.video_type == YoutubeKey.VideoType.SHORT and len(channel_info['entries'][1]['entries']) <=0:
-                return []
+            if self.option.video_type == YoutubeKey.VideoType.SHORT and ('entries' not in channel_info['entries'][1]) :
+                videos = channel_info['entries'] 
             
-            if self.option.video_type == YoutubeKey.VideoType.VIDEO and len(channel_info['entries'][0]['entries']) <=0:
-                return []
-            
-            videos = channel_info['entries'][1]['entries'] if self.option.video_type == YoutubeKey.VideoType.SHORT else channel_info['entries'][0]['entries']
+            if self.option.video_type == YoutubeKey.VideoType.VIDEO and ('entries' not in channel_info['entries'][0]):
+                videos = channel_info['entries'] 
+            if len(videos)<=0:
+                videos = channel_info['entries'][1]['entries'] if self.option.video_type == YoutubeKey.VideoType.SHORT else channel_info['entries'][0]['entries']
 
             if self.option.video_sort == YoutubeKey.VideoSort.PHOBIEN :
-                videos = self._quick_sort_view(videos)
+                videos = self.quick_sort_view(videos)
             elif self.option.video_sort == YoutubeKey.VideoSort.CUNHAT:
                 videos = videos[::-1]
             
@@ -76,7 +71,7 @@ class Youtube:
                 return videos
             else:
                 return videos[0:int(self.option.count)]
-        except e:
+        except Exception as e:
             if self._prcess:
                 self._prcess(Message.NotificationType.ERROR, f"{Message.Youtube.message_get_info_channel_success}: Error: {e}")
         
@@ -109,7 +104,7 @@ class Youtube:
         for video in videos:
             if self._prcess:
                 self._prcess(Message.NotificationType.NOTIFICATION, f"{Message.Youtube.message_get_info_channel_success}: {video['title']}")
-            if self.download_video(video["url"],self.option.output_path):
+            if self.download_video(video["url"]):
                 success_video.append(video)
             else:
                 error_video.append(video)
