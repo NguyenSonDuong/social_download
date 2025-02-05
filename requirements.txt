@@ -1,0 +1,5 @@
+Pytube>=15.0.0  # Nên kiểm tra phiên bản mới nhất trên PyPI
+instaloader>=4.10 # Nên kiểm tra phiên bản mới nhất trên PyPI
+moviepy>=1.0.0   # Nên kiểm tra phiên bản mới nhất trên PyPI
+requests>=2.30.0 # Nên kiểm tra phiên bản mới nhất trên PyPI
+selenium>=4.10.0 # Nên kiểm tra phiên bản mới nhất trên PyPI
