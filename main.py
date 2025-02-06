@@ -25,6 +25,10 @@ def YoutubeDownloadServerOne(option = Option()):
     
 
 def YoutubeDownloadServerTwo(option):
+    
+    youtube = YoutubeServerTwo(process,option)
+
+    youtube.run()
 
     return
 
@@ -82,15 +86,18 @@ Nhập lựa chọn của bạn: """)
 
     if int(luachon) == 1:
         option = SetOption()
-        try:
-            success, error = YoutubeDownloadServerOne(option)
-            if len(error)>0:
-                youtube_server_2 = YoutubeServerTwo(option)
-                for video_error in error:
-                    status = youtube_server_2.download_video_and_audio(video_error["id"])
-        except Exception as e:
-            print(e)
-            YoutubeDownloadServerTwo(option)
+        server = int(input("Lựa chọn server (1 hoặc 2): "))
+        if server == 1:
+            try:
+                success, error = YoutubeDownloadServerOne(option)
+            except Exception as e:
+                print(e)
+        else:
+            try:
+                YoutubeDownloadServerTwo(option)
+            except Exception as e:
+                print(e)
+        
 
     if int(luachon) == 2: 
         DouyinDownload()
