@@ -81,10 +81,11 @@ def DouyinDownload():
 
 if __name__ == "__main__":
 
-    luachon = input("""
-1. Tải video youtube
-2: Tải video Douyin
-Nhập lựa chọn của bạn: """)
+#     luachon = input("""
+# 1. Tải video youtube
+# 2: Tải video Douyin
+# Nhập lựa chọn của bạn: """)
+    
     app = QApplication(sys.argv)
     home = Ui_HomeWindow()
     sys.exit(app.exec_())
