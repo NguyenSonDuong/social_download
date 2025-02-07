@@ -83,7 +83,7 @@ def DouyinDownload(option):
 if __name__ == "__main__":
 
     app = QApplication(sys.argv)
-    home = Ui_HomeWindow()
+    home = Ui_HomeWindow(YoutubeDownloadServerOne,DouyinDownload)
     sys.exit(app.exec_())
    
 
