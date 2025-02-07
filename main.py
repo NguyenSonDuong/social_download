@@ -1,15 +1,17 @@
 import sys
 import os
+from PyQt5.QtWidgets import QApplication
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'message'))
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'youtube'))
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'ui'))
 from youtube.youtube_download import Youtube
 from youtube.youtube_key import  Option, YoutubeKey
 from youtube.youtube_download_server_2 import YoutubeServerTwo
-
+from ui.home.home import Ui_HomeWindow
 def process(funtion_name, messgae):
     print(f"{funtion_name}: {messgae}")
 
-
+                                                 
 def YoutubeDownloadServerOne(option = Option()):
 
     youtube = Youtube(process, option)
@@ -83,7 +85,10 @@ if __name__ == "__main__":
 1. Tải video youtube
 2: Tải video Douyin
 Nhập lựa chọn của bạn: """)
-
+    app = QApplication(sys.argv)
+    home = Ui_HomeWindow()
+    sys.exit(app.exec_())
+    pass
     if int(luachon) == 1:
         option = SetOption()
         server = int(input("Lựa chọn server (1 hoặc 2): "))
@@ -103,36 +108,3 @@ Nhập lựa chọn của bạn: """)
         DouyinDownload()
     
 
-
-    #  option_list_video ={
-#                 "url": "",
-#                 "video_sort": VideoSort.PHOBIEN,
-#                 "video_type": VideoType.VIDEO,
-#                 "count": -1
-#             }
-#     option_list_video["url"] = input("Nhập url channel: ")
-#     option_list_video["video_sort"] = input("""
-# 1. Video phổ biến
-# 2. Video cũ
-# 3. Video mới nhất
-# Nhập lựa chọn của bạn: """)
-#     option_list_video["video_type"] = input("""
-# 1. Video
-# 2. Short
-# Nhập lựa chọn của bạn: """)
-#     option_list_video["count"] = input("Nhập số lượng video (nhập -1 nếu muốn tải tất): ")
-
-    # option_download = {
-    #     "format": "best",
-    #     "output_path": "download"
-    # }
-
-#     format = input("""
-# 0. Video chất lượng cao
-# 1. Video chất lượng thấp
-# 2. Video chất lượng cao (Không có âm thanh)
-# 3. Video chất lượng thấp (Không có âm thanh)
-# 4. Audio chất lượng cao (Không có video)
-# 5. Audio chất lượng thấp (Không có video)
-# Nhập lựa chọn của bạn: """)
-#     option_download["format"] = Youtube.VideoFormat[int(format)]
