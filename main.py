@@ -76,36 +76,14 @@ Nhập lựa chọn của bạn: """)
     option.video_quatity = YoutubeKey.VideoQuality.VideoFormat[int(format)]
     return option
 
-def DouyinDownload():
+def DouyinDownload(option):
+    
     print("Update...")
 
 if __name__ == "__main__":
 
-#     luachon = input("""
-# 1. Tải video youtube
-# 2: Tải video Douyin
-# Nhập lựa chọn của bạn: """)
-    
     app = QApplication(sys.argv)
     home = Ui_HomeWindow()
     sys.exit(app.exec_())
-    pass
-    if int(luachon) == 1:
-        option = SetOption()
-        server = int(input("Lựa chọn server (1 hoặc 2): "))
-        if server == 1:
-            try:
-                success, error = YoutubeDownloadServerOne(option)
-            except Exception as e:
-                print(e)
-        else:
-            try:
-                YoutubeDownloadServerTwo(option)
-            except Exception as e:
-                print(e)
-        
-
-    if int(luachon) == 2: 
-        DouyinDownload()
-    
+   
 
