@@ -1,15 +1,17 @@
 import sys
 import os
+from PyQt5.QtWidgets import QApplication
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'message'))
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'youtube'))
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'ui'))
 from youtube.youtube_download import Youtube
 from youtube.youtube_key import  Option, YoutubeKey
 from youtube.youtube_download_server_2 import YoutubeServerTwo
-
+from ui.home.home import Ui_HomeWindow
 def process(funtion_name, messgae):
     print(f"{funtion_name}: {messgae}")
 
-
+                                                 
 def YoutubeDownloadServerOne(option = Option()):
 
     youtube = Youtube(process, option)
@@ -25,6 +27,10 @@ def YoutubeDownloadServerOne(option = Option()):
     
 
 def YoutubeDownloadServerTwo(option):
+    
+    youtube = YoutubeServerTwo(process,option)
+
+    youtube.run()
 
     return
 
@@ -70,62 +76,14 @@ Nhập lựa chọn của bạn: """)
     option.video_quatity = YoutubeKey.VideoQuality.VideoFormat[int(format)]
     return option
 
-def DouyinDownload():
+def DouyinDownload(option):
+    
     print("Update...")
 
 if __name__ == "__main__":
 
-    luachon = input("""
-1. Tải video youtube
-2: Tải video Douyin
-Nhập lựa chọn của bạn: """)
+    app = QApplication(sys.argv)
+    home = Ui_HomeWindow(YoutubeDownloadServerOne,DouyinDownload)
+    sys.exit(app.exec_())
+   
 
-    if int(luachon) == 1:
-        option = SetOption()
-        try:
-            success, error = YoutubeDownloadServerOne(option)
-            if len(error)>0:
-                youtube_server_2 = YoutubeServerTwo(option)
-                for video_error in error:
-                    status = youtube_server_2.download_video_and_audio(video_error["id"])
-        except Exception as e:
-            print(e)
-            YoutubeDownloadServerTwo(option)
-
-    if int(luachon) == 2: 
-        DouyinDownload()
-    
-
-
-    #  option_list_video ={
-#                 "url": "",
-#                 "video_sort": VideoSort.PHOBIEN,
-#                 "video_type": VideoType.VIDEO,
-#                 "count": -1
-#             }
-#     option_list_video["url"] = input("Nhập url channel: ")
-#     option_list_video["video_sort"] = input("""
-# 1. Video phổ biến
-# 2. Video cũ
-# 3. Video mới nhất
-# Nhập lựa chọn của bạn: """)
-#     option_list_video["video_type"] = input("""
-# 1. Video
-# 2. Short
-# Nhập lựa chọn của bạn: """)
-#     option_list_video["count"] = input("Nhập số lượng video (nhập -1 nếu muốn tải tất): ")
-
-    # option_download = {
-    #     "format": "best",
-    #     "output_path": "download"
-    # }
-
-#     format = input("""
-# 0. Video chất lượng cao
-# 1. Video chất lượng thấp
-# 2. Video chất lượng cao (Không có âm thanh)
-# 3. Video chất lượng thấp (Không có âm thanh)
-# 4. Audio chất lượng cao (Không có video)
-# 5. Audio chất lượng thấp (Không có video)
-# Nhập lựa chọn của bạn: """)
-#     option_download["format"] = Youtube.VideoFormat[int(format)]

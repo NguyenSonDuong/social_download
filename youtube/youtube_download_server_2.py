@@ -196,6 +196,7 @@ class YoutubeServerTwo:
         if not channel_id:
             if self._process:
                 self._process(Message.NotificationType.ERROR, f"Error: Không tìm thấy Channel ID")
+            return
         else:
             if self._process:
                 self._process(Message.NotificationType.NOTIFICATION, f"✅ ID kênh: {channel_id}")
@@ -205,7 +206,7 @@ class YoutubeServerTwo:
             print(f"📌 Danh sách video: {video_list}")
 
             for video_id in tqdm(video_list, desc="Downloading videos", unit="video"):
-                self.download_video_and_audio(video_id, '1080p')
+                self.download_video_and_audio(video_id)
                 time.sleep(5)
 
      
