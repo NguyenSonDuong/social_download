@@ -1,8 +1,8 @@
-from PyQt5.QtWidgets import QApplication, QMainWindow, QGraphicsDropShadowEffect
+from PyQt5.QtWidgets import  QMainWindow, QGraphicsDropShadowEffect
 from PyQt5 import uic
 from youtube.youtube_key import  Option
-from PyQt5.QtGui import QIcon, QPixmap, QPainter, QColor, QFont
-from PyQt5.QtCore import Qt, QPoint, QPropertyAnimation, QSize,QEvent
+from PyQt5.QtGui import QColor, QFont
+from PyQt5.QtCore import Qt, QPoint,QEvent
 from PyQt5.QtWidgets import QGraphicsBlurEffect
 from douyin.douyin_key import Option as opDouyin
 import sys
