@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1458</width>
-    <height>868</height>
+    <height>978</height>
    </rect>
   </property>
   <property name="font">
@@ -754,9 +754,9 @@ color: black;
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>-1430</y>
+            <y>0</y>
             <width>992</width>
-            <height>2732</height>
+            <height>2784</height>
            </rect>
           </property>
           <property name="styleSheet">
@@ -1341,7 +1341,44 @@ QPushButton:pressed {
                   </layout>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="btnEditVideo_2">
+                  <layout class="QHBoxLayout" name="horizontalLayout_2">
+                   <item>
+                    <widget class="QLabel" name="label_17">
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Trạng thái: </string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QProgressBar" name="pbDownload">
+                     <property name="styleSheet">
+                      <string notr="true">QProgressBar {
+                border: 2px solid #3498db;
+                border-radius: 5px;
+                background-color: #ecf0f1;
+                text-align: center;
+                font-size: 14px;
+            }
+            QProgressBar::chunk {
+                background-color: #3498db;
+                width: 10px;
+                border-radius: 10px;
+            }</string>
+                     </property>
+                     <property name="value">
+                      <number>10</number>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="btnDownload">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                      <horstretch>0</horstretch>
@@ -1956,7 +1993,7 @@ QPushButton:pressed {
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="txtFolderSaveVideo_6">
+                      <widget class="QLineEdit" name="txtRowVideoRight">
                        <property name="placeholderText">
                         <string>D:\Launcher</string>
                        </property>
@@ -1993,7 +2030,7 @@ QPushButton:pressed {
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="txtFolderSaveVideo_8">
+                      <widget class="QLineEdit" name="txtColumRight">
                        <property name="placeholderText">
                         <string>D:\Launcher</string>
                        </property>
@@ -2030,7 +2067,7 @@ QPushButton:pressed {
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="txtFolderSaveVideo_4">
+                      <widget class="QLineEdit" name="txtRowVideoLeft">
                        <property name="placeholderText">
                         <string>D:\Launcher</string>
                        </property>
@@ -2067,7 +2104,7 @@ QPushButton:pressed {
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="txtFolderSaveVideo_7">
+                      <widget class="QLineEdit" name="txtColumLeft">
                        <property name="placeholderText">
                         <string>D:\Launcher</string>
                        </property>
@@ -2104,7 +2141,7 @@ QPushButton:pressed {
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="txtFolderSaveVideo_3">
+                      <widget class="QLineEdit" name="txtOutro">
                        <property name="placeholderText">
                         <string>D:\Launcher</string>
                        </property>
@@ -2141,7 +2178,7 @@ QPushButton:pressed {
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="txtFolderSaveVideo_2">
+                      <widget class="QLineEdit" name="txtInto">
                        <property name="placeholderText">
                         <string>D:\Launcher</string>
                        </property>
@@ -2187,7 +2224,7 @@ QPushButton:pressed {
                     <number>10</number>
                    </property>
                    <item>
-                    <widget class="QPushButton" name="pushButton_3">
+                    <widget class="QPushButton" name="btnResetEditVideo">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                        <horstretch>0</horstretch>
@@ -2221,7 +2258,7 @@ QPushButton:pressed {
                     </widget>
                    </item>
                    <item>
-                    <widget class="QPushButton" name="pushButton_2">
+                    <widget class="QPushButton" name="btnSaveEditVideo">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                        <horstretch>0</horstretch>
@@ -2277,7 +2314,7 @@ margin: 15px
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_49">
               <item>
-               <widget class="QPushButton" name="pushButton">
+               <widget class="QPushButton" name="btnEditColor">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                   <horstretch>0</horstretch>
@@ -2672,7 +2709,7 @@ QPushButton:pressed {
                  <number>10</number>
                 </property>
                 <item>
-                 <widget class="QPushButton" name="pushButton_4">
+                 <widget class="QPushButton" name="btnEditColorReset">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -2706,7 +2743,7 @@ QPushButton:pressed {
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="pushButton_5">
+                 <widget class="QPushButton" name="btnEditColorVideo">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -2757,7 +2794,7 @@ margin: 15px
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_50">
               <item>
-               <widget class="QPushButton" name="pushButton_6">
+               <widget class="QPushButton" name="btnEditAudio">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                   <horstretch>0</horstretch>
@@ -2791,7 +2828,7 @@ QPushButton:pressed {
                </widget>
               </item>
               <item>
-               <widget class="QFrame" name="">
+               <widget class="QFrame" name="frame">
                 <property name="styleSheet">
                  <string notr="true">margin: 15px 0px 0px 0px</string>
                 </property>
@@ -2809,7 +2846,7 @@ QPushButton:pressed {
                   <number>0</number>
                  </property>
                  <item>
-                  <widget class="QLineEdit" name="txtCutStart_15">
+                  <widget class="QLineEdit" name="txtMainVolum">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                      <horstretch>0</horstretch>
@@ -2838,7 +2875,7 @@ QPushButton:pressed {
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="txtCutStart_16">
+                  <widget class="QLineEdit" name="txtAudioTone">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                      <horstretch>0</horstretch>
@@ -2898,7 +2935,7 @@ QPushButton:pressed {
               <item>
                <layout class="QHBoxLayout" name="upVolumLayout">
                 <item>
-                 <widget class="QSlider" name="horizontalSlider">
+                 <widget class="QSlider" name="sliderEditVolum">
                   <property name="styleSheet">
                    <string notr="true">QSlider{
 margin: 0px 50px 0px 0px
@@ -2934,7 +2971,7 @@ QSlider::groove:horizontal {
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLineEdit" name="txtCutStart_17">
+                 <widget class="QLineEdit" name="txtNumberVolum">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -3000,7 +3037,7 @@ QSlider::groove:horizontal {
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="txtFolderSaveVideo_27">
+               <widget class="QLineEdit" name="txtFolderMusicVideo">
                 <property name="placeholderText">
                  <string>D:\Launcher</string>
                 </property>
@@ -3032,7 +3069,7 @@ QSlider::groove:horizontal {
               <item>
                <layout class="QHBoxLayout" name="editVolumeSizeLayout">
                 <item>
-                 <widget class="QSlider" name="horizontalSlider_5">
+                 <widget class="QSlider" name="sliderAudioEdit">
                   <property name="styleSheet">
                    <string notr="true">QSlider{
 margin: 0px 50px 0px 0px
@@ -3336,7 +3373,7 @@ QSlider::groove:horizontal {
                </layout>
               </item>
               <item>
-               <widget class="QFrame" name="">
+               <widget class="QFrame" name="frame">
                 <property name="styleSheet">
                  <string notr="true">margin: 15px 0px 0px 0px</string>
                 </property>

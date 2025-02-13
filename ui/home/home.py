@@ -62,13 +62,9 @@ class Ui_HomeWindow(QMainWindow):
         shadow = QGraphicsDropShadowEffect(self)
         shadow.setBlurRadius(30)
         shadow.setOffset(2, 2)
-        shadow.setColor(QColor(0, 0, 0, 80))  # Màu xám nhạt
+        shadow.setColor(QColor(0, 0, 0, 80))
         self.scrollAreaMain.setGraphicsEffect(shadow)
 
-        # shadow2 = QGraphicsDropShadowEffect(self)
-        # shadow2.setBlurRadius(30)
-        # shadow2.setOffset(2, 2)
-        # shadow2.setColor(QColor(0, 0, 0, 80))  # Màu xám nhạt
         
         self.btnDouyin.installEventFilter(self)
         self.btnYoutube.installEventFilter(self)
@@ -101,14 +97,8 @@ class Ui_HomeWindow(QMainWindow):
         shadow5.setOffset(2, 2)
         shadow5.setColor(QColor(0, 0, 0, 80)) 
         self.editAudioLayout.setGraphicsEffect(shadow5)
-
-
-
-
         
         self.setMinimumSize(150, 50)
-        
-
         self.show()
 
 
@@ -147,21 +137,19 @@ class Ui_HomeWindow(QMainWindow):
 
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:
-            self.start_pos = event.globalPos()  # Lưu vị trí bắt đầu
-            event.accept()  # Chặn sự kiện lan ra ngoài
+            self.start_pos = event.globalPos()  
+            event.accept()  
 
     def mouseMoveEvent(self, event):
         if self.start_pos and event.buttons() == Qt.LeftButton:
             delta = event.globalPos() - self.start_pos
             self.window().move(self.window().pos() + delta)
             self.start_pos = event.globalPos()
-            event.accept()  # Chặn sự kiện lan ra ngoài
+            event.accept()  
 
     def mouseReleaseEvent(self, event):
         self.start_pos = None
-        event.accept()  # Chặn sự kiện lan ra ngoài
-
-
+        event.accept()  
 
     def changeEvent(self, event):
         if event.type() == QEvent.WindowStateChange:
