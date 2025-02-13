@@ -1,0 +1,1337 @@
+{
+  "kind": "youtube#searchListResponse",
+  "etag": "OEJWT1y9khEcxBW3OdbQHoF6ZvU",
+  "regionCode": "VN",
+  "pageInfo": {
+    "totalResults": 43,
+    "resultsPerPage": 39
+  },
+  "items": [
+    {
+      "kind": "youtube#searchResult",
+      "etag": "qgDm8eg8s-6zlszcYp0eiwmTxj4",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "F10f7RKSvA8"
+      },
+      "snippet": {
+        "publishedAt": "2024-12-29T17:00:55Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "TẠM BIỆT NĂM CŨ QUA - NGUYỄN THƯƠNG (KARAOKE TONE NAM)",
+        "description": "Tạm Biệt Năm Cũ Qua - Nguyễn Thương Link Audio: https://lunyent.lnk.to/TamBietNamCuQua #TamBietNamCuQua ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/F10f7RKSvA8/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/F10f7RKSvA8/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/F10f7RKSvA8/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-12-29T17:00:55Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "yh37pUWfKzqJmrJPC45ISSZGBBw",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "MBsMVLl4KkQ"
+      },
+      "snippet": {
+        "publishedAt": "2024-12-28T12:00:06Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "TẠM BIỆT NĂM CŨ QUA - NGUYỄN THƯƠNG (LYRICS VIDEO)",
+        "description": "Tạm Biệt Năm Cũ Qua - Nguyễn Thương Link Audio: https://lunyent.lnk.to/TamBietNamCuQua #TamBietNamCuQua ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/MBsMVLl4KkQ/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/MBsMVLl4KkQ/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/MBsMVLl4KkQ/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-12-28T12:00:06Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "psXyOkVA9qG5FPaGms63Ug7UQyM",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "Kv-D21MM_jw"
+      },
+      "snippet": {
+        "publishedAt": "2024-12-28T07:24:57Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "ngày 28 tháng 12, 2024",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/Kv-D21MM_jw/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/Kv-D21MM_jw/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/Kv-D21MM_jw/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-12-28T07:24:57Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "oufbMLhWa8ifuHio33h9UJprWFk",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "-eB52g5ydfo"
+      },
+      "snippet": {
+        "publishedAt": "2024-11-06T10:34:37Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "HẬU LỘC 3 TRONG TÔI - NGUYỄN THƯƠNG (OFFICIAL MUSIC VIDEO)",
+        "description": "HẬU LỘC 3 TRONG TÔI - NGUYỄN THƯƠNG LINK AUDIO: https://ffm.to/hauloc3trongtoi SÁNG TÁC / TRÌNH BÀY / HOÀ ÂM: ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/-eB52g5ydfo/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/-eB52g5ydfo/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/-eB52g5ydfo/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-11-06T10:34:37Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "ryzkcA7X34LyTyIFi-IOL3cACFI",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "FqSg0MwS1SQ"
+      },
+      "snippet": {
+        "publishedAt": "2024-02-09T14:55:16Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "TẾT CỦA NGƯỜI LỚN - KARAOKE - NGUYỄN THƯƠNG",
+        "description": "TẾT CỦA NGƯỜI LỚN - NGUYỄN THƯƠNG (OFFICIAL MUSIC VIDEO) SINGER / COMPOSER / MUSIC PRODUCER : NGUYỄN ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/FqSg0MwS1SQ/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/FqSg0MwS1SQ/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/FqSg0MwS1SQ/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-02-09T14:55:16Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "37xdGnDM2jhsWmEwLYdyeVXppf4",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "ACl-0fF-iFg"
+      },
+      "snippet": {
+        "publishedAt": "2024-02-08T02:09:11Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "Tết Của Người Lớn - Nguyễn Thương | Lofi",
+        "description": "SINGER / COMPOSER / MUSIC PRODUCER : NGUYỄN THƯƠNG Tết Của Người Lớn - Nguyễn Thương | Lofi #tetcuanguoilon ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/ACl-0fF-iFg/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/ACl-0fF-iFg/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/ACl-0fF-iFg/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-02-08T02:09:11Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "A32cEyivDeJ2xlXew-9r9HDhHU0",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "31cDrI8Mmy8"
+      },
+      "snippet": {
+        "publishedAt": "2024-01-22T12:00:08Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "TẾT CỦA NGƯỜI LỚN - NGUYỄN THƯƠNG (OFFICIAL MUSIC VIDEO)",
+        "description": "TẾT CỦA NGƯỜI LỚN - NGUYỄN THƯƠNG (OFFICIAL MUSIC VIDEO) SINGER / COMPOSER / MUSIC PRODUCER : NGUYỄN ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/31cDrI8Mmy8/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/31cDrI8Mmy8/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/31cDrI8Mmy8/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-01-22T12:00:08Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "NI8fgOJIjvIQ0X34E1QBgMtkdNM",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "HD1wQjrRpXw"
+      },
+      "snippet": {
+        "publishedAt": "2023-12-29T16:05:29Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "Tết của người lớn - Nguyễn Thương (Demo) Những ngày cuối năm",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/HD1wQjrRpXw/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/HD1wQjrRpXw/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/HD1wQjrRpXw/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-12-29T16:05:29Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "IwMXYTIZLxlQMkHH83R6ynCRBNE",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "zB4VtNUEEdA"
+      },
+      "snippet": {
+        "publishedAt": "2023-12-18T11:00:06Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "DUYÊN THƯƠNG - DU UYÊN x NGUYỄN THƯƠNG (OFFICIAL MUSIC VIDEO)",
+        "description": "DUYÊN THƯƠNG - DU UYÊN x NGUYỄN THƯƠNG (OFFICIAL MUSIC VIDEO) #nguyenthuong #duyenthuong Landing Page: ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/zB4VtNUEEdA/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/zB4VtNUEEdA/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/zB4VtNUEEdA/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-12-18T11:00:06Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "cuyVrytGRFYdn0VrQsj7KNPx5qU",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "0qtU2afwqOY"
+      },
+      "snippet": {
+        "publishedAt": "2023-12-14T11:23:21Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "Cùng chờ đón Duyên Thương - Du Uyên x Nguyễn Thương và lúc 18h ngày 18/12/2023 nhé cả nhà ơi 😘",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/0qtU2afwqOY/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/0qtU2afwqOY/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/0qtU2afwqOY/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-12-14T11:23:21Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "lWWNX9nMI_dmNaDXKYxvyTRKzs4",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "FUWyErH3Jeg"
+      },
+      "snippet": {
+        "publishedAt": "2023-12-02T12:00:11Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "CÔ ĐƠN ƠI - NGUYỄN THƯƠNG (OFFICIAL MUSIC VIDEO)",
+        "description": "CÔ ĐƠN ƠI - NGUYỄN THƯƠNG (OFFICIAL MUSIC VIDEO) SINGER / COMPOSER / MUSIC PRODUCER : NGUYỄN THƯƠNG ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/FUWyErH3Jeg/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/FUWyErH3Jeg/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/FUWyErH3Jeg/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-12-02T12:00:11Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "6kxEbB7SmCBdtZca-HW2mYwg9ZY",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "rIsz4r21qCM"
+      },
+      "snippet": {
+        "publishedAt": "2023-11-28T15:13:45Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "Thật khó tìm ra lối...càng muốn gỡ lại càng rối...Cô Đơn Ơi - Nguyễn Thương (Demo)",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/rIsz4r21qCM/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/rIsz4r21qCM/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/rIsz4r21qCM/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-11-28T15:13:45Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "Kgudj_s5d2e21GMdaUjzLhLfQ3M",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "Dd9EvMZFWT4"
+      },
+      "snippet": {
+        "publishedAt": "2023-11-28T12:00:11Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "CÔ ĐƠN ƠI - NGUYỄN THƯƠNG (DEMO)",
+        "description": "CÔ ĐƠN ƠI - NGUYỄN THƯƠNG (OFFICIAL MUSIC VIDEO) SINGER / COMPOSER / MUSIC PRODUCER : NGUYỄN THƯƠNG ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/Dd9EvMZFWT4/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/Dd9EvMZFWT4/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/Dd9EvMZFWT4/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-11-28T12:00:11Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "ZxFQJY4rD4gPM_E7RGlKicAh4tU",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "XLdmLYFvB-Y"
+      },
+      "snippet": {
+        "publishedAt": "2023-09-06T16:06:10Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "Có ai ngốc như tôi :)) #Nanglunglinh #NguyenThuong Chỉ vì hôm đấy nắng lung linh",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/XLdmLYFvB-Y/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/XLdmLYFvB-Y/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/XLdmLYFvB-Y/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-09-06T16:06:10Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "Hk261CLRpsIFuZb-KdPHHwkX-FM",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "902VCV6oylw"
+      },
+      "snippet": {
+        "publishedAt": "2023-08-25T12:00:10Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "NẮNG LUNG LINH (PIANO VERSION) - NGUYỄN THƯƠNG - Chỉ vì hôm đấy nắng lung linh",
+        "description": "NẮNG LUNG LINH - NGUYỄN THƯƠNG (PIANO VERSION) SINGER / COMPOSER / MUSIC PRODUCER : NGUYỄN THƯƠNG ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/902VCV6oylw/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/902VCV6oylw/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/902VCV6oylw/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-08-25T12:00:10Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "7lJtu1xK7R4ThC_RtQg6SnffoAo",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "L_VS_J8VrGQ"
+      },
+      "snippet": {
+        "publishedAt": "2023-08-24T12:00:24Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "NẮNG LUNG LINH - NGUYỄN THƯƠNG (Lyrics)  Chỉ vì hôm đấy nắng lung linh tôi nỡ động lòng",
+        "description": "NẮNG LUNG LINH - NGUYỄN THƯƠNG (Lyric) SINGER / COMPOSER / MUSIC PRODUCER : NGUYỄN THƯƠNG ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/L_VS_J8VrGQ/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/L_VS_J8VrGQ/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/L_VS_J8VrGQ/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-08-24T12:00:24Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "t7EloRQIIQthIDuGYoxBv8vzoMw",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "c8xfgL0SOks"
+      },
+      "snippet": {
+        "publishedAt": "2023-08-22T14:42:21Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "Hậu trường quay MV Nắng Lung Linh #NguyenThuong #Nanglunglin Chỉ vì hôm đấy nắng lung linh",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/c8xfgL0SOks/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/c8xfgL0SOks/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/c8xfgL0SOks/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-08-22T14:42:21Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "aR1PaRJVNNQcug9krwmO74LKHYE",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "k2tk36CtdHM"
+      },
+      "snippet": {
+        "publishedAt": "2023-08-16T12:00:37Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "NẮNG LUNG LINH - KARAOKE - NGUYỄN THƯƠNG",
+        "description": "NẮNG LUNG LINH - NGUYỄN THƯƠNG (OFFICIAL MUSIC VIDEO) SINGER / COMPOSER / MUSIC PRODUCER : NGUYỄN ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/k2tk36CtdHM/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/k2tk36CtdHM/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/k2tk36CtdHM/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-08-16T12:00:37Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "-1yd85u8zaxT7ZOn0mbzS5fVqVA",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "ULMkur-gDq4"
+      },
+      "snippet": {
+        "publishedAt": "2023-08-13T11:26:54Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "Chỉ vì hôm đấy nắng lung linh #Nắnglunglinh #nguyenthuong #shorts",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/ULMkur-gDq4/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/ULMkur-gDq4/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/ULMkur-gDq4/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-08-13T11:26:54Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "fOav6_AvCYFz9pSxBIcZgd6e8Zk",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "BsNm0Zv6hnE"
+      },
+      "snippet": {
+        "publishedAt": "2023-08-12T12:00:07Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "NẮNG LUNG LINH - NGUYỄN THƯƠNG (OFFICIAL MUSIC VIDEO)",
+        "description": "NẮNG LUNG LINH - NGUYỄN THƯƠNG (OFFICIAL MUSIC VIDEO) SINGER / COMPOSER / MUSIC PRODUCER : NGUYỄN ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/BsNm0Zv6hnE/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/BsNm0Zv6hnE/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/BsNm0Zv6hnE/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-08-12T12:00:07Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "ZneP8ZLx9isCwx-iT7xYIuld5zo",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "5kPPtV_YR0U"
+      },
+      "snippet": {
+        "publishedAt": "2023-06-20T12:00:03Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "Ngọt Ngọt Thơm Thơm - Nguyễn Trần Trung Quân x Nguyễn Thương ngẫu hứng Piano",
+        "description": "NguyenTranTrungQuan #NgọtNgọtThơmThơm #NguyenThuong Artist/Singer: Nguyễn Trần Trung Quân Composer and ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/5kPPtV_YR0U/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/5kPPtV_YR0U/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/5kPPtV_YR0U/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-06-20T12:00:03Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "UGeJORrRv3KGTNHmtfbtzE9o6w8",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "6CjFSxR8uas"
+      },
+      "snippet": {
+        "publishedAt": "2023-06-08T12:00:05Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "NGUYỄN THƯƠNG - SỐNG CÙNG VIE DRAMAS",
+        "description": "NGUYỄN THƯƠNG - SỐNG CÙNG VIE DRAMAS CÙNG ĐĂNG KÝ KÊNH VÀ THEO DÕI THƯƠNG TẠI ĐÂY NHÉ ! Link FB ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/6CjFSxR8uas/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/6CjFSxR8uas/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/6CjFSxR8uas/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-06-08T12:00:05Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "GbqNYr8GE1HL7qz4_U46PSwVkHs",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "n0IVrfqRnAU"
+      },
+      "snippet": {
+        "publishedAt": "2022-11-29T14:04:43Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "ĐI ĐÂU CŨNG ĐƯỢC (BOSSA NOVA) - DU UYÊN x NGUYỄN THƯƠNG",
+        "description": "ĐI ĐÂU CŨNG ĐƯỢC (BOSSA NOVA) - DU UYÊN x NGUYỄN THƯƠNG Nghe audio tại đây: https://ntmusic.lnk.to/ddcd Music ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/n0IVrfqRnAU/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/n0IVrfqRnAU/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/n0IVrfqRnAU/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-11-29T14:04:43Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "ECRdxVWLd3nowbJvvtoinJZXNMk",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "VdZQMdIRgyo"
+      },
+      "snippet": {
+        "publishedAt": "2022-04-04T12:00:12Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "DUYÊN DUYÊN SỐ SỐ - DU UYÊN x NGUYỄN THƯƠNG | Phiên bản Tác Giả",
+        "description": "DUYÊN DUYÊN SỐ SỐ - DU UYÊN x NGUYỄN THƯƠNG Music Composer: Nguyễn Thương Record: Tùng Lâm Mix Master: ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/VdZQMdIRgyo/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/VdZQMdIRgyo/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/VdZQMdIRgyo/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-04-04T12:00:12Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "pfdvlZnd3UdUv3y1TCnKCyq-daA",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "PfSeukI59Oc"
+      },
+      "snippet": {
+        "publishedAt": "2022-03-17T14:51:30Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "DUYÊN DUYÊN SỐ SỐ - DU UYÊN x NGUYỄN THƯƠNG ( LIVE PIANO)",
+        "description": "DUYÊN DUYÊN SỐ SỐ - DU UYÊN x NGUYỄN THƯƠNG ( LIVE PIANO) MV GỐC: ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/PfSeukI59Oc/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/PfSeukI59Oc/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/PfSeukI59Oc/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-03-17T14:51:30Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "poxHpPs0XmyBmvW0Gen55mxS8i4",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "IbRWfXvOtYI"
+      },
+      "snippet": {
+        "publishedAt": "2021-10-23T14:34:12Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "ngày 23 tháng 10, 2021",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/IbRWfXvOtYI/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/IbRWfXvOtYI/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/IbRWfXvOtYI/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2021-10-23T14:34:12Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "3kxaac5-3jSmaS25rYuVU_x7v6I",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "ARshB9QeNoM"
+      },
+      "snippet": {
+        "publishedAt": "2021-05-09T12:12:35Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "NẮNG LUNG LINH - NGUYỄN THƯƠNG x PHONG MAX (DEMO)",
+        "description": "NẮNG LUNG LINH - NGUYỄN THƯƠNG x PHONG MAX Sáng tác và trình bày: Nguyễn Thương Hòa Âm: Phong Max ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/ARshB9QeNoM/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/ARshB9QeNoM/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/ARshB9QeNoM/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2021-05-09T12:12:35Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "ckT9VoOu076Nxvn4_zrs9utPqIE",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "mwtiK-XHY2U"
+      },
+      "snippet": {
+        "publishedAt": "2021-02-07T15:15:26Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "MẸ ANH BẢO CƯỚI - NGUYỄN THƯƠNG ft ĐỖ THƯỞNG",
+        "description": "Mẹ Anh Bảo Cưới - Nguyễn Thương ft Đỗ Thưởng Composer: Nguyễn Thương - Tuấn Dũng Music Producer: Nguyễn Thương ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/mwtiK-XHY2U/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/mwtiK-XHY2U/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/mwtiK-XHY2U/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2021-02-07T15:15:26Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "Sl-kRj1hsyIij6vXC4eqLR8XSSU",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "tjHXlD-JulY"
+      },
+      "snippet": {
+        "publishedAt": "2021-01-03T13:38:26Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "KARAOKE ĐÔNG THƯƠNG - NGUYỄN THƯƠNG (BEAT NỮ)",
+        "description": "KARAOKE ĐÔNG THƯƠNG - NGUYỄN THƯƠNG (BEAT NỮ) Sau thành công của các Hit “Màu Nước Mắt”, “Tự Tâm”, “Canh Ba”, ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/tjHXlD-JulY/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/tjHXlD-JulY/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/tjHXlD-JulY/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2021-01-03T13:38:26Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "89ytEWUHCabdJPUjuDL2Y369dz0",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "g_eCbtby3xc"
+      },
+      "snippet": {
+        "publishedAt": "2021-01-03T13:26:56Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "KARAOKE ĐÔNG THƯƠNG - NGUYỄN THƯƠNG (BEAT NAM)",
+        "description": "KARAOKE ĐÔNG THƯƠNG - NGUYỄN THƯƠNG (BEAT NAM) Sau thành công của các Hit “Màu Nước Mắt”, “Tự Tâm”, “Canh ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/g_eCbtby3xc/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/g_eCbtby3xc/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/g_eCbtby3xc/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2021-01-03T13:26:56Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "gNDGnSBA5uVpLGNYRxnidubdUhM",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "Ddf3nU2l5CE"
+      },
+      "snippet": {
+        "publishedAt": "2020-12-26T12:30:10Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "ĐÔNG THƯƠNG | NGUYỄN THƯƠNG | OFFICIAL MUSIC VIDEO",
+        "description": "ĐÔNG THƯƠNG | NGUYỄN THƯƠNG | OFFICIAL MUSIC VIDEO Sau thành công của các Hit “Màu Nước Mắt”, “Tự Tâm”, “Canh ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/Ddf3nU2l5CE/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/Ddf3nU2l5CE/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/Ddf3nU2l5CE/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2020-12-26T12:30:10Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "hkAXd6w_m560fdyzaanlRAaU_XI",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "MSkrg63uR4o"
+      },
+      "snippet": {
+        "publishedAt": "2020-04-10T12:21:33Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "Nguyễn Thương - Những Ngày Yêu Thương ( 2013 )",
+        "description": "Sáng Tác & Trình bày: Nguyễn Thương Phối Khí & Mix Master: Dương Minh Thắng Họa Sĩ: Tuấn Dũng SUBSCRIBE KÊNH ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/MSkrg63uR4o/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/MSkrg63uR4o/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/MSkrg63uR4o/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2020-04-10T12:21:33Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "4duyg8nqSezo3z9PMziigZoMYZY",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "q2AX0_A7Kr0"
+      },
+      "snippet": {
+        "publishedAt": "2019-12-11T11:26:56Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "TỰ TÂM 1 HOUR - NGUYỄN THƯƠNG",
+        "description": "Tutam#NguyenTranTrungQuan#NguyenThuong Tự Tâm Nguyễn Thương.",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/q2AX0_A7Kr0/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/q2AX0_A7Kr0/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/q2AX0_A7Kr0/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2019-12-11T11:26:56Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "GYqbE0AhHBbsqI4rb0wkL3QNUJM",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "b9EIM0YYsEU"
+      },
+      "snippet": {
+        "publishedAt": "2019-11-22T11:03:02Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "KARAOKE - TỰ TÂM - PIANO",
+        "description": "Music Composer : Nguyễn Thương BEAT PIANO \"TỰ TÂM\" chuẩn Edit Video: Tuấn Dũng Mọi Người theo dõi Thương qua các ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/b9EIM0YYsEU/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/b9EIM0YYsEU/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/b9EIM0YYsEU/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2019-11-22T11:03:02Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "rbHrmjWBx5L2OJPa4VjQbGg3Vzo",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "SVfhebEo3po"
+      },
+      "snippet": {
+        "publishedAt": "2019-11-02T14:25:41Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "TỰ TÂM - Nguyễn Thương (Tác Giả Cover)",
+        "description": "TỰ TÂM - Nguyễn Trần Trung Quân Music Composer: Nguyễn Thương Record & Mixing: Đinh Văn Huy Director: Tuấn Dũng ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/SVfhebEo3po/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/SVfhebEo3po/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/SVfhebEo3po/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2019-11-02T14:25:41Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "tC-asGEgMsVw2j15W0wvEOJ5-dg",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "C6WJSoEJG_Y"
+      },
+      "snippet": {
+        "publishedAt": "2019-11-01T13:19:27Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "TỰ TÂM - Nguyễn Thương (tác giả) - Hoàng Tôn - Đình Khang (Mashup Màu Nước Mắt)",
+        "description": "Tự Tâm: Nguyễn Trần Trung Quân Sáng Tác: Nguyễn Thương https://www.youtube.com/watch?v=4GuR_g75ufY FB: ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/C6WJSoEJG_Y/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/C6WJSoEJG_Y/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/C6WJSoEJG_Y/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2019-11-01T13:19:27Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "4dtuv6Ao0gWk7iNl_-BGjdBCe2Y",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "Qq3FFQ3UsbA"
+      },
+      "snippet": {
+        "publishedAt": "2019-02-24T13:13:19Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "NGUYỄN THƯƠNG nhạc sĩ &quot;Màu Nước Mắt&quot; xúc động khi khán giả hát MNM trong rạp chiếu &quot;Cua Lại Vợ Bầu&quot;",
+        "description": "NGUYỄN THƯƠNG nhạc sĩ \"Màu Nước Mắt\" xúc động khi khán giả hát MNM trong rạp chiếu \"Cua Lại Vợ Bầu\" Cuộc trò chuyện ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/Qq3FFQ3UsbA/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/Qq3FFQ3UsbA/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/Qq3FFQ3UsbA/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2019-02-24T13:13:19Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "pIh-gdveR3uy1ylpzTexshdFiNo",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "KPG28KdE5mc"
+      },
+      "snippet": {
+        "publishedAt": "2019-02-23T08:47:19Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "MÀU NƯỚC MẮT - NOO PHƯỚC  THỊNH live cực ngọt",
+        "description": "MÀU NƯỚC MẮT - NOO PHƯỚC THỊNH live cực ngọt Mọi người LIVE, SHARE, ĐĂNG KÝ ủng hộ kênh của Thương để xem ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/KPG28KdE5mc/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/KPG28KdE5mc/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/KPG28KdE5mc/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2019-02-23T08:47:19Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "V5LtiaVKH5K3_Il2zVgzQI5Bh9A",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "PDArQsInTdo"
+      },
+      "snippet": {
+        "publishedAt": "2019-02-10T05:50:16Z",
+        "channelId": "UC1MfmfbWECr5OKJGp40eOvA",
+        "title": "MẸ ANH BẢO CƯỚI - NGUYỄN THƯƠNG ( phiên bản tác giả )",
+        "description": "MẸ ANH BẢO CƯỚI - HOÀNG TÔN x Mr T x NGUYỄN THƯƠNG x TUẤN DŨNG Mọi người cùng LIKE, SHARE và ĐĂNG KÝ kênh ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/PDArQsInTdo/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/PDArQsInTdo/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/PDArQsInTdo/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nguyễn Thương Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2019-02-10T05:50:16Z"
+      }
+    }
+  ]
+}

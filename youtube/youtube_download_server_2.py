@@ -64,6 +64,8 @@ class YoutubeServerTwo:
         
         return video_info
 
+    
+
     def get_videos(self,channel_id):
         """Lấy danh sách video từ kênh theo các tiêu chí"""
         
@@ -85,8 +87,6 @@ class YoutubeServerTwo:
 
             for video_id in video_ids:
                 duration = video_durations.get(video_id, 0)
-
-                # 🔹 Lọc video theo loại mong muốn
                 if  self.option.video_duration== YoutubeKey.VideoDuaration.VIDEODURATION_20MINUTE and duration <= 1200:
                     continue  # Loại bỏ video ngắn hơn 20 phút
                 if self.option.video_duration == YoutubeKey.VideoDuaration.VIDEODURATION_FROM4TO20MINUTE and (duration < 240 or duration > 1200):

@@ -8,7 +8,6 @@ class Option:
         self.video_quatity= YoutubeKey.VideoQuality.VideoFormat[0]
         self.output_path = "Downloads"
         self.count= -1
-
         self.video_duration= YoutubeKey.VideoDuaration.ALLVIDEO
         self.API_KEY =  "AIzaSyC6XAJGYvbDHiLYFGpv8BpUz9PRSNwIQEA"
 
@@ -27,6 +26,9 @@ class YoutubeKey:
         PHOBIEN = 1
         MOINHAT = 2
         CUNHAT = 3
+        DATE = 4
+        WEEK = 5
+        YEAR = 6
     class VideoType:
         VIDEO = 1
         SHORT = 2
