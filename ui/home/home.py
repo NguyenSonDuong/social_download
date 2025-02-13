@@ -10,6 +10,7 @@ import sys
 class Ui_HomeWindow(QMainWindow):
     
     _isClick = None
+    
     def __init__(self, onYoutubeDownload, onDouyinDownload):
         sys.path.append('.')
         super().__init__()
@@ -101,11 +102,9 @@ class Ui_HomeWindow(QMainWindow):
         self.setMinimumSize(150, 50)
         self.show()
 
-
     def onBtnCloseClick(self,event):
         self.close()
-
-    
+   
     def onBtnMinimizeClick(self,event):
         self.showMinimized()  
 
@@ -131,9 +130,6 @@ class Ui_HomeWindow(QMainWindow):
                 obj.setGraphicsEffect(shadow)  
                 self._isClick = obj
         return super().eventFilter(obj, event)
-
-
-
 
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:
