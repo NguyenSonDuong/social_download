@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1458</width>
-    <height>945</height>
+    <height>868</height>
    </rect>
   </property>
   <property name="font">
@@ -754,9 +754,9 @@ color: black;
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>-1742</y>
+            <y>-1430</y>
             <width>992</width>
-            <height>2470</height>
+            <height>2732</height>
            </rect>
           </property>
           <property name="styleSheet">
@@ -865,6 +865,9 @@ background-color: rgb(255, 255, 255);
                      <bold>true</bold>
                     </font>
                    </property>
+                   <property name="styleSheet">
+                    <string notr="true">margin: 15px 0px 0px 0px</string>
+                   </property>
                    <property name="text">
                     <string>Link kênh:</string>
                    </property>
@@ -883,10 +886,10 @@ background-color: rgb(255, 255, 255);
                  <item>
                   <layout class="QVBoxLayout" name="verticalLayout_4">
                    <property name="topMargin">
-                    <number>12</number>
+                    <number>0</number>
                    </property>
                    <property name="bottomMargin">
-                    <number>12</number>
+                    <number>0</number>
                    </property>
                    <item>
                     <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -910,6 +913,9 @@ background-color: rgb(255, 255, 255);
                          <weight>75</weight>
                          <bold>true</bold>
                         </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">margin: 15px 0px 0px 0px</string>
                        </property>
                        <property name="text">
                         <string>Lựa chọn cách tải video:</string>
@@ -1019,6 +1025,9 @@ background-color: rgb(255, 255, 255);
                          <weight>75</weight>
                          <bold>true</bold>
                         </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">margin: 15px 0px 0px 0px</string>
                        </property>
                        <property name="text">
                         <string>Lựa chọn tải về sắp xếp theo thứ tự</string>
@@ -1172,6 +1181,9 @@ background-color: rgb(255, 255, 255);
                          <bold>true</bold>
                         </font>
                        </property>
+                       <property name="styleSheet">
+                        <string notr="true">margin: 15px 0px 0px 0px</string>
+                       </property>
                        <property name="text">
                         <string>Số lượng video muốn tải:</string>
                        </property>
@@ -1260,6 +1272,9 @@ background-color: rgb(255, 255, 255);
                          <weight>75</weight>
                          <bold>true</bold>
                         </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">margin: 15px 0px 0px 0px</string>
                        </property>
                        <property name="text">
                         <string>Lựa chọn Forder lưu video:</string>
@@ -1471,6 +1486,9 @@ QPushButton:pressed {
                          <bold>true</bold>
                         </font>
                        </property>
+                       <property name="styleSheet">
+                        <string notr="true">margin: 15px 0px 0px 0px</string>
+                       </property>
                        <property name="text">
                         <string>Lựa chọn khung hình:</string>
                        </property>
@@ -1553,6 +1571,9 @@ QPushButton:pressed {
                        <weight>75</weight>
                        <bold>true</bold>
                       </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">margin: 15px 0px 0px 0px</string>
                      </property>
                      <property name="text">
                       <string>Tốc độ video:</string>
@@ -1667,6 +1688,9 @@ QPushButton:pressed {
                        <weight>75</weight>
                        <bold>true</bold>
                       </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">margin: 15px 0px 0px 0px</string>
                      </property>
                      <property name="text">
                       <string>Cắt video:</string>
@@ -1807,6 +1831,7 @@ QPushButton {
     padding: 6px 12px;         /* Khoảng cách lề */
     border: none;              /* Không viền */
  padding: 10px 25px 10px 25px; 
+margin: 15px 0px 0px 0px
 }
 
 /* Khi hover */
@@ -1840,6 +1865,9 @@ QPushButton:pressed {
                        <weight>75</weight>
                        <bold>true</bold>
                       </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">margin: 15px 0px 0px 0px</string>
                      </property>
                      <property name="text">
                       <string>Lựa chọn Forder lưu video:</string>
@@ -1916,6 +1944,9 @@ QPushButton:pressed {
                          <bold>true</bold>
                         </font>
                        </property>
+                       <property name="styleSheet">
+                        <string notr="true">margin: 15px 0px 0px 0px</string>
+                       </property>
                        <property name="text">
                         <string>Video phải</string>
                        </property>
@@ -1949,6 +1980,9 @@ QPushButton:pressed {
                          <weight>75</weight>
                          <bold>true</bold>
                         </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">margin: 15px 0px 0px 0px</string>
                        </property>
                        <property name="text">
                         <string>Video phải:</string>
@@ -1984,6 +2018,9 @@ QPushButton:pressed {
                          <bold>true</bold>
                         </font>
                        </property>
+                       <property name="styleSheet">
+                        <string notr="true">margin: 15px 0px 0px 0px</string>
+                       </property>
                        <property name="text">
                         <string>Video trái:</string>
                        </property>
@@ -2017,6 +2054,9 @@ QPushButton:pressed {
                          <weight>75</weight>
                          <bold>true</bold>
                         </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">margin: 15px 0px 0px 0px</string>
                        </property>
                        <property name="text">
                         <string>Video trái:</string>
@@ -2052,6 +2092,9 @@ QPushButton:pressed {
                          <bold>true</bold>
                         </font>
                        </property>
+                       <property name="styleSheet">
+                        <string notr="true">margin: 15px 0px 0px 0px</string>
+                       </property>
                        <property name="text">
                         <string>Lồng outro:</string>
                        </property>
@@ -2085,6 +2128,9 @@ QPushButton:pressed {
                          <weight>75</weight>
                          <bold>true</bold>
                         </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">margin: 15px 0px 0px 0px</string>
                        </property>
                        <property name="text">
                         <string>Lồng Intro:</string>
@@ -2278,6 +2324,9 @@ QPushButton:pressed {
                   <weight>75</weight>
                   <bold>true</bold>
                  </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">margin: 15px 0px 0px 0px</string>
                 </property>
                 <property name="text">
                  <string>Hệ màu cơ bản:</string>
@@ -2482,6 +2531,9 @@ QPushButton:pressed {
                   <weight>75</weight>
                   <bold>true</bold>
                  </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">margin: 15px 0px 0px 0px</string>
                 </property>
                 <property name="text">
                  <string>Hệ màu nâng cao:</string>
@@ -2739,66 +2791,83 @@ QPushButton:pressed {
                </widget>
               </item>
               <item>
-               <layout class="QHBoxLayout" name="volumMainLayout">
-                <item>
-                 <widget class="QLineEdit" name="txtCutStart_15">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>50</width>
-                    <height>16777215</height>
-                   </size>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="label_93">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="text">
-                   <string>Main Volum</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="txtCutStart_16">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>50</width>
-                    <height>16777215</height>
-                   </size>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="label_94">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="text">
-                   <string>Audio Tone</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
+               <widget class="QFrame" name="">
+                <property name="styleSheet">
+                 <string notr="true">margin: 15px 0px 0px 0px</string>
+                </property>
+                <layout class="QHBoxLayout" name="volumMainLayout">
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QLineEdit" name="txtCutStart_15">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>50</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_93">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="text">
+                    <string>Main Volum</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="txtCutStart_16">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>50</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_94">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="text">
+                    <string>Audio Tone</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
               </item>
               <item>
                <widget class="QLabel" name="label_107">
@@ -2814,6 +2883,9 @@ QPushButton:pressed {
                   <weight>75</weight>
                   <bold>true</bold>
                  </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">margin: 15px 0px 0px 0px</string>
                 </property>
                 <property name="text">
                  <string>Chỉnh sửa âm lượng:</string>
@@ -2917,7 +2989,7 @@ QSlider::groove:horizontal {
                  </font>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">margin: 20px 0px 0px 0px</string>
+                 <string notr="true">margin: 15px 0px 0px 0px</string>
                 </property>
                 <property name="text">
                  <string>Thêm nhạc cho tất cả video:</string>
@@ -3051,7 +3123,7 @@ QSlider::groove:horizontal {
                  </font>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">margin: 20px 0px 0px 0px</string>
+                 <string notr="true">margin: 15px 0px 0px 0px</string>
                 </property>
                 <property name="text">
                  <string>Bóp méo âm thanh:</string>
@@ -3264,23 +3336,27 @@ QSlider::groove:horizontal {
                </layout>
               </item>
               <item>
-               <layout class="QHBoxLayout" name="editAudioSaveResetLayout">
-                <property name="topMargin">
-                 <number>10</number>
+               <widget class="QFrame" name="">
+                <property name="styleSheet">
+                 <string notr="true">margin: 15px 0px 0px 0px</string>
                 </property>
-                <property name="bottomMargin">
-                 <number>10</number>
-                </property>
-                <item>
-                 <widget class="QPushButton" name="pushButton_8">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QPushButton {
+                <layout class="QHBoxLayout" name="editAudioSaveResetLayout">
+                 <property name="topMargin">
+                  <number>10</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>10</number>
+                 </property>
+                 <item>
+                  <widget class="QPushButton" name="pushButton_8">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton {
     background-color: rgb(253, 0, 22); /* Màu xanh */
     color: white;              /* Chữ màu trắng */      
     font-weight: bold;         /* In đậm */
@@ -3299,22 +3375,22 @@ QPushButton:hover {
 QPushButton:pressed {
     background-color: rgb(124, 0, 12); /* Màu xanh tối hơn khi nhấn */
 }</string>
-                  </property>
-                  <property name="text">
-                   <string>Reset</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="pushButton_9">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QPushButton {
+                   </property>
+                   <property name="text">
+                    <string>Reset</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="pushButton_9">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton {
     background-color: #347EFF; /* Màu xanh */
     color: white;              /* Chữ màu trắng */      
     font-weight: bold;         /* In đậm */
@@ -3333,13 +3409,14 @@ QPushButton:hover {
 QPushButton:pressed {
     background-color: #1F58C2; /* Màu xanh tối hơn khi nhấn */
 }</string>
-                  </property>
-                  <property name="text">
-                   <string>Save</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
+                   </property>
+                   <property name="text">
+                    <string>Save</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
               </item>
              </layout>
             </widget>
