@@ -75,22 +75,7 @@ class Youtube:
             if self._prcess:
                 self._prcess(Message.NotificationType.ERROR, f"{Message.Youtube.message_get_info_channel_success}: Error: {e}")
         
-    def download_video(self, video_url):
-        ydl_opts = {
-            'format': self.option.video_quatity,  
-            'outtmpl': f'{self.option.output_path}/%(title)s.%(ext)s',
-            'progress_hooks': [self._download_hook]
-        }
-
-        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-            try:
-                ydl.download([video_url]) 
-                return True
-            except Exception as e:
-                if self._prcess:
-                    self._prcess(Message.NotificationType.ERROR, f"{Message.Youtube.message_get_info_channel_success}: Error: {e}")
-                return False
-            
+    
     def _download_hook(self, d):
         pass
         # if d['status'] == 'finished':
