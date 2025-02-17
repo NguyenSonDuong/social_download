@@ -55,7 +55,6 @@ class QuantityVideoChannel(QThread):
         )
         self.processInfo.emit(youtube.getTotalVideoChannel(self.url))
 
-
 class LoadingOverlay(QFrame):
     def __init__(self, parent=None, gif_path="loading.gif"):
         super().__init__(parent)
@@ -101,7 +100,6 @@ class LoadingOverlay(QFrame):
         self.setVisible(False)  # Ẩn overlay
 
 class Ui_HomeWindow(QMainWindow):
-    
     _isClick = None
     
     def __init__(self, onYoutubeDownload, onDouyinDownload):
@@ -120,8 +118,11 @@ class Ui_HomeWindow(QMainWindow):
         self.overlay.setOverlayGeometry(self.mainLayout) 
         self.overlay.hide_overlay()
 
+
+
     def processInfo(self, numberVideo, status):
         print(f"Đã lấy được: {numberVideo} - {status}")
+
     def processDownload(self, videoDownload, videoError,status):
         if status == YoutubeStatus.PROCESS:
             self.overlay.frame.pnAllsBar.setMaximum(int(self.txtQuatityDownload.text()))
@@ -134,15 +135,16 @@ class Ui_HomeWindow(QMainWindow):
             red_format = QTextCharFormat()
             red_format.setForeground(QColor("red"))
             cursor.insertText(f"Lỗi: {videoError[0]["video_url"]} - {videoError[0]["title"]}\n", red_format)
+
     def processDownloadVideo(self,percent,speed,downloaded,total,status):
         if status == YoutubeStatus.PROCESS:
             self.overlay.frame.pnChildensBar.setMaximum(100)
             self.overlay.frame.pnChildensBar.setValue(int(percent))
-        # if status == YoutubeStatus.DONE:
-        #     self.overlay.hide_overlay()
-        # self.pbDownload.setValue(int(percent))
+
     def processError(self, error, status):
         print(error)
+
+
 
 
     def startTask(self, url,count, order, from_date, to_date, download_folder):
@@ -167,7 +169,6 @@ class Ui_HomeWindow(QMainWindow):
             print("Nhập đường dẫn đi")
             return
         quantity = int(self.txtQuatityDownload.text())
-        
 
         from_date = datetime(1990,1,1)
         to_date = datetime.now()
@@ -197,7 +198,7 @@ class Ui_HomeWindow(QMainWindow):
         self.selectSortLayout2.setAlignment(Qt.AlignLeft)
         self.numberDownloadLayout.setAlignment(Qt.AlignLeft)
         self.selectFrame.setAlignment(Qt.AlignLeft)
-        self.selectSpeet.setAlignment(Qt.AlignLeft)
+        self.selectSpeet_2.setAlignment(Qt.AlignLeft)
         self.cutVideoLayout.setAlignment(Qt.AlignLeft)
         self.editColorBasicLayout.setAlignment(Qt.AlignLeft)
         self.editColorAdvancedLayout.setAlignment(Qt.AlignLeft)
@@ -207,12 +208,10 @@ class Ui_HomeWindow(QMainWindow):
         self.bigToSmallVolume.setAlignment(Qt.AlignLeft)
         self.smallToBigVolumeLayout.setAlignment(Qt.AlignLeft)
 
-
         self.editVideoSaveResetLayout.setAlignment(Qt.AlignRight)
         self.editColorSaveResetLayout.setAlignment(Qt.AlignRight)
         self.runLayout.setAlignment(Qt.AlignRight)
         self.editAudioSaveResetLayout.setAlignment(Qt.AlignRight)
-
 
         self.editLayout.setAlignment(Qt.AlignTop)
         self.folderSaveVideoLayout.setAlignment(Qt.AlignTop)
@@ -226,6 +225,7 @@ class Ui_HomeWindow(QMainWindow):
         self.btnMinimize.clicked.connect(self.onBtnMinimizeClick)
 
         self.setMouseTracking(True)
+
     def setupCalendar(self):
         self.calendarFrom = QCalendarWidget(self)
         self.calendarTo = QCalendarWidget(self)
@@ -241,6 +241,7 @@ class Ui_HomeWindow(QMainWindow):
         
         self.txtFromDate.installEventFilter(self)
         self.txtToDate.installEventFilter(self)
+
     def setupNavigator(self):
         self.btnDouyin.installEventFilter(self)
         self.btnYoutube.installEventFilter(self)
@@ -249,6 +250,7 @@ class Ui_HomeWindow(QMainWindow):
         self.btnTwitter.installEventFilter(self)
         self.btnSnapChat.installEventFilter(self)
         self.btnQQLive.installEventFilter(self)
+
     def setupShadowsForTheme(self):
         shadow = QGraphicsDropShadowEffect(self)
         shadow.setBlurRadius(30)
@@ -277,14 +279,31 @@ class Ui_HomeWindow(QMainWindow):
         shadow5.setOffset(2, 2)
         shadow5.setColor(QColor(0, 0, 0, 80)) 
         self.editAudioLayout.setGraphicsEffect(shadow5)
-    def setupGroupCheckbox(self):
-        self.groupOrder = QButtonGroup(self)
 
+    def setupGroupCheckbox(self):
+
+        self.groupOrder = QButtonGroup(self)
         self.groupOrder.addButton(self.rdDownloadNewVideo,1)
         self.groupOrder.addButton(self.edDownloadTrending,2)
         self.groupOrder.addButton(self.rdDownloadOld,3)
         self.groupOrder.addButton(self.rdDownloadDate,4)
         self.groupOrder.addButton(self.rdDownloadWeek,5)
+        self.groupOrder.addButton(self.rdCustomTime,6)
+
+        self.groupFrame = QButtonGroup(self)
+        self.groupFrame.addButton(self.rd169,1)
+        self.groupFrame.addButton(self.rd619,2)
+        self.groupFrame.addButton(self.rd43,3)
+
+        self.groupSpeed = QButtonGroup(self)
+        self.groupSpeed.addButton(self.rdSpeedKeep,1)
+        self.groupSpeed.addButton(self.rdSpeedx2,2)
+        self.groupSpeed.addButton(self.rdSpeedx4,3)
+
+        self.groupCut = QButtonGroup(self)
+        self.groupCut.addButton(self.rdCut3sStart,1)
+        self.groupCut.addButton(self.rdCutSpped3sEnd,1)
+        self.groupCut.addButton(self.rdCut1sForeach5s,1)
 
     def setAndRun(self):
         self.setWindowFlags(Qt.FramelessWindowHint)
@@ -299,20 +318,36 @@ class Ui_HomeWindow(QMainWindow):
         
 
         self.btnRun.clicked.connect(self.onBtnRunClick)
+        self.btnEditVideo.clicked.connect(self.onBtnEditVideoClick)
+        self.btnEditColor.clicked.connect(self.onBtnEditColorClick)
+        self.btnEditAudio.clicked.connect(self.onBtnEditAudioClick)
         self.btnSelectFolder.clicked.connect(self.onBtnSelectFolderClick)
         self.rdDownloadAllVideo.toggled.connect(self.onDownloadAllChecked)
         
         
         self.show()
 
-
-
-
+    def onBtnEditVideoClick(self,event):
+        if self.editMainLayout.isHidden():
+            self.editMainLayout.show()
+        else:
+            self.editMainLayout.hide()
+    
+    def onBtnEditAudioClick(self,event):
+        if self.editAudioMainLayout.isHidden():
+            self.editAudioMainLayout.show()
+        else:
+            self.editAudioMainLayout.hide()
+    
+    def onBtnEditColorClick(self,event):
+        if self.editColorMainLayout.isHidden():
+            self.editColorMainLayout.show()
+        else:
+            self.editColorMainLayout.hide()
 
     def onRdTimeCustomChecked(self):
         self.txtFromDate.setEnabled(self.rdCustomTime.isChecked())
         self.txtToDate.setEnabled(self.rdCustomTime.isChecked())
-
 
     def onDownloadAllChecked(self):
         """Hàm xử lý sự kiện khi RadioButton thay đổi trạng thái"""
@@ -326,12 +361,11 @@ class Ui_HomeWindow(QMainWindow):
             return
         self.getQuantityVideo = QuantityVideoChannel(url)
         self.getQuantityVideo.processInfo.connect(self.processGetQuantityVideoChannel)
-        if radio_button.isChecked():  
-
+        if radio_button.isChecked():
             if self.getQuantityVideo and self.getQuantityVideo.isRunning():
                 self.getQuantityVideo.wait()
                 self.getQuantityVideo.typeRun = 2
-            self.overlay.show_overlay() 
+            self.overlay.show_overlay()
             self.getQuantityVideo.start()
 
     def onBtnSelectFolderClick(self,event):
@@ -339,13 +373,6 @@ class Ui_HomeWindow(QMainWindow):
         
         if folder_path:  # Nếu người dùng chọn thư mục
             self.txtFolderSaveVideo.setText(f"{folder_path}")
-
-
-
-
-
-
-
 
     def setDateCalendarFrom(self, date):
         formatted_date = date.toString("dd/MM/yyyy")  # Định dạng ngày
@@ -366,8 +393,6 @@ class Ui_HomeWindow(QMainWindow):
             re.IGNORECASE
         )
         return re.match(pattern, test) is not None
-
-    
 
     def processGetQuantityVideoChannel(self,quantity):
         print
@@ -394,14 +419,14 @@ class Ui_HomeWindow(QMainWindow):
         elif event.type() == QEvent.MouseButtonPress:
             if self._isClick != obj:
                 if self._isClick != None:
-                    self._isClick.setGraphicsEffect(None) 
+                    self._isClick.setGraphicsEffect(None)
                 shadow = QGraphicsDropShadowEffect(obj)
                 shadow.setBlurRadius(15)  
                 shadow.setOffset(3, 3)  
                 shadow.setColor(QColor(0, 0, 0, 100)) 
                 obj.setGraphicsEffect(shadow)  
                 self._isClick = obj
-        
+                
         if obj == self.txtFromDate and event.type() == QEvent.MouseButtonPress:
             if self.calendarFrom.isVisible():
                 self.calendarFrom.hide()
