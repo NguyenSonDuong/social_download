@@ -11,6 +11,7 @@ class YoutubeStatus:
     PROCESS = 1
     DONE = 2
     ERROR = -1
+    DONE_ONE = 3
 
 class Youtube:
 
@@ -271,6 +272,7 @@ class Youtube:
                     status = self.download_video(video,download_folder)
                     if status:
                         videoDownload.append(video)
+                        self._processDownload([video],[],YoutubeStatus.DONE_ONE)
                     else:
                         videoError.append(video)
                         self._processDownload(videoDownload,video,YoutubeStatus.ERROR)
@@ -281,6 +283,7 @@ class Youtube:
                     status = self.download_video(videos[step],download_folder)
                     if status:
                         videoDownload.append(videos[step])
+                        self._processDownload([videos[step]],[],YoutubeStatus.DONE_ONE)
                     else:
                         videoError.append(videos[step])
                         self._processDownload(videoDownload,[videos[step]],YoutubeStatus.ERROR)

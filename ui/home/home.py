@@ -172,7 +172,7 @@ class Ui_HomeWindow(QMainWindow):
         self.txtGamma.setText(self.setting["color"]["gamma"])
         self.txtHue.setText(self.setting["color"]["hue"])
         self.txtAudioTone.setText(self.setting["color"]["audio_tone"])
-        
+
     def setupEditVideoSetting(self):
         if self.setting["edit_video"]["frame"] == "1":
             self.rd169.setChecked(True)
@@ -302,6 +302,8 @@ class Ui_HomeWindow(QMainWindow):
         print(f"Đã lấy được: {numberVideo} - {status}")
 
     def processDownload(self, videoDownload, videoError,status):
+        if status == YoutubeStatus.DONE_ONE:
+            self.log(f"Đã tải xong: {videoDownload[0]["title"]}","green")
         if status == YoutubeStatus.PROCESS:
             self.overlay.frame.pnAllsBar.setMaximum(int(self.txtQuatityDownload.text()))
             self.overlay.frame.pnAllsBar.setValue(len(videoDownload)+len(videoError))
@@ -513,8 +515,6 @@ class Ui_HomeWindow(QMainWindow):
         self.groupCut.addButton(self.rdCutSpped3sEnd,2)
         self.groupCut.addButton(self.rdCut1sForeach5s,3)
 
-
-
     def setAndRun(self):
         self.setWindowFlags(Qt.FramelessWindowHint)
         self.setMinimumSize(150, 50)
@@ -525,7 +525,6 @@ class Ui_HomeWindow(QMainWindow):
         self.setupShadowsForTheme()
         self.setupGroupCheckbox()
         
-
         self.btnRun.clicked.connect(self.onBtnRunClick)
         self.btnSelectFolder.clicked.connect(self.onBtnSelectFolderClick)
 
@@ -534,7 +533,6 @@ class Ui_HomeWindow(QMainWindow):
         self.btnSaveAudioSetting.clicked.connect(self.onBtnSaveAudioSettingClick)
 
         # self.rdDownloadAllVideo.toggled.connect(self.onDownloadAllChecked)
-        
         
         self.lbErrorUrl.hide()
         self.lbErrorQuantity.hide()
