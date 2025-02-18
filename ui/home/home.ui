@@ -759,9 +759,9 @@ color: black;
             <property name="geometry">
              <rect>
               <x>0</x>
-              <y>-2005</y>
+              <y>-1629</y>
               <width>990</width>
-              <height>2757</height>
+              <height>2832</height>
              </rect>
             </property>
             <property name="styleSheet">
@@ -889,6 +889,23 @@ background-color: rgb(255, 255, 255);
                     </widget>
                    </item>
                    <item>
+                    <widget class="QLabel" name="lbErrorUrl">
+                     <property name="font">
+                      <font>
+                       <pointsize>9</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color: rgb(168, 0, 0);</string>
+                     </property>
+                     <property name="text">
+                      <string>Vui lòng nhập đúng định dạng URL!</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
                     <layout class="QVBoxLayout" name="verticalLayout_4">
                      <property name="topMargin">
                       <number>0</number>
@@ -947,6 +964,9 @@ background-color: rgb(255, 255, 255);
                            </property>
                            <property name="text">
                             <string>Tải video theo Link</string>
+                           </property>
+                           <property name="checked">
+                            <bool>true</bool>
                            </property>
                           </widget>
                          </item>
@@ -1295,6 +1315,23 @@ margin: 0px 0px 0px 20px
                          </item>
                         </layout>
                        </item>
+                       <item>
+                        <widget class="QLabel" name="lbErrorQuantity">
+                         <property name="font">
+                          <font>
+                           <pointsize>9</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">color: rgb(168, 0, 0);</string>
+                         </property>
+                         <property name="text">
+                          <string>Vui lòng nhập số lượng muốn tải hoặc chọn tải toàn bộ !</string>
+                         </property>
+                        </widget>
+                       </item>
                       </layout>
                      </item>
                      <item>
@@ -1382,6 +1419,23 @@ QPushButton:pressed {
                           </widget>
                          </item>
                         </layout>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="lbErrorSelectFolder">
+                         <property name="font">
+                          <font>
+                           <pointsize>9</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">color: rgb(168, 0, 0);</string>
+                         </property>
+                         <property name="text">
+                          <string>Vui lòng chọn folder để lưu !</string>
+                         </property>
+                        </widget>
                        </item>
                       </layout>
                      </item>
@@ -1605,85 +1659,87 @@ QPushButton:pressed {
                          </widget>
                         </item>
                         <item>
-                         <layout class="QHBoxLayout" name="selectSpeet_2">
-                          <item>
-                           <widget class="QRadioButton" name="rdSpeedKeep">
-                            <property name="sizePolicy">
-                             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                              <horstretch>0</horstretch>
-                              <verstretch>0</verstretch>
-                             </sizepolicy>
-                            </property>
-                            <property name="font">
-                             <font>
-                              <pointsize>-1</pointsize>
-                             </font>
-                            </property>
-                            <property name="text">
-                             <string>Giữ nguyên</string>
-                            </property>
-                           </widget>
-                          </item>
-                          <item>
-                           <widget class="QRadioButton" name="rdSpeedx2">
-                            <property name="sizePolicy">
-                             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                              <horstretch>0</horstretch>
-                              <verstretch>0</verstretch>
-                             </sizepolicy>
-                            </property>
-                            <property name="font">
-                             <font>
-                              <pointsize>-1</pointsize>
-                             </font>
-                            </property>
-                            <property name="text">
-                             <string>Nhanh x2</string>
-                            </property>
-                           </widget>
-                          </item>
-                          <item>
-                           <widget class="QRadioButton" name="rdSpeedx4">
-                            <property name="sizePolicy">
-                             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                              <horstretch>0</horstretch>
-                              <verstretch>0</verstretch>
-                             </sizepolicy>
-                            </property>
-                            <property name="font">
-                             <font>
-                              <pointsize>-1</pointsize>
-                             </font>
-                            </property>
-                            <property name="text">
-                             <string>Nhanh x4</string>
-                            </property>
-                           </widget>
-                          </item>
-                          <item>
-                           <widget class="QLineEdit" name="txtSppedCustom">
-                            <property name="sizePolicy">
-                             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                              <horstretch>0</horstretch>
-                              <verstretch>0</verstretch>
-                             </sizepolicy>
-                            </property>
-                           </widget>
-                          </item>
-                          <item>
-                           <widget class="QLabel" name="label_13">
-                            <property name="sizePolicy">
-                             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                              <horstretch>0</horstretch>
-                              <verstretch>0</verstretch>
-                             </sizepolicy>
-                            </property>
-                            <property name="text">
-                             <string>Chỉnh theo yêu cầu</string>
-                            </property>
-                           </widget>
-                          </item>
-                         </layout>
+                         <widget class="QWidget" name="selectSpeet_4" native="true">
+                          <layout class="QHBoxLayout" name="selectSpeet_2">
+                           <item>
+                            <widget class="QRadioButton" name="rdSpeedKeep">
+                             <property name="sizePolicy">
+                              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                               <horstretch>0</horstretch>
+                               <verstretch>0</verstretch>
+                              </sizepolicy>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>-1</pointsize>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>Giữ nguyên</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QRadioButton" name="rdSpeedx2">
+                             <property name="sizePolicy">
+                              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                               <horstretch>0</horstretch>
+                               <verstretch>0</verstretch>
+                              </sizepolicy>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>-1</pointsize>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>Nhanh x2</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QRadioButton" name="rdSpeedx4">
+                             <property name="sizePolicy">
+                              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                               <horstretch>0</horstretch>
+                               <verstretch>0</verstretch>
+                              </sizepolicy>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>-1</pointsize>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>Nhanh x4</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QLineEdit" name="txtSppedCustom">
+                             <property name="sizePolicy">
+                              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                               <horstretch>0</horstretch>
+                               <verstretch>0</verstretch>
+                              </sizepolicy>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QLabel" name="label_13">
+                             <property name="sizePolicy">
+                              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                               <horstretch>0</horstretch>
+                               <verstretch>0</verstretch>
+                              </sizepolicy>
+                             </property>
+                             <property name="text">
+                              <string>Chỉnh theo yêu cầu</string>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
                         </item>
                        </layout>
                       </item>
@@ -2394,7 +2450,7 @@ QPushButton:pressed {
                    <item>
                     <layout class="QHBoxLayout" name="editColorBasicLayout">
                      <item>
-                      <widget class="QLineEdit" name="txtCutStart_5">
+                      <widget class="QLineEdit" name="txtOpacity">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -2423,7 +2479,7 @@ QPushButton:pressed {
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="txtCutStart_6">
+                      <widget class="QLineEdit" name="txtRed">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -2455,7 +2511,7 @@ QPushButton:pressed {
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="txtCutStart_7">
+                      <widget class="QLineEdit" name="txtGreen">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -2484,7 +2540,7 @@ QPushButton:pressed {
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="txtCutStart_8">
+                      <widget class="QLineEdit" name="txtBlue">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -2513,7 +2569,7 @@ QPushButton:pressed {
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="txtCutStart_9">
+                      <widget class="QLineEdit" name="txtBrightness">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -2542,7 +2598,7 @@ QPushButton:pressed {
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="txtCutStart_10">
+                      <widget class="QLineEdit" name="txtColorCustom">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -2601,7 +2657,7 @@ QPushButton:pressed {
                    <item>
                     <layout class="QHBoxLayout" name="editColorAdvancedLayout">
                      <item>
-                      <widget class="QLineEdit" name="txtCutStart_11">
+                      <widget class="QLineEdit" name="txtSatuation">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -2630,7 +2686,7 @@ QPushButton:pressed {
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="txtCutStart_12">
+                      <widget class="QLineEdit" name="txtGamma">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -2659,7 +2715,7 @@ QPushButton:pressed {
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="txtCutStart_13">
+                      <widget class="QLineEdit" name="txtHue">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -2688,7 +2744,7 @@ QPushButton:pressed {
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="txtCutStart_14">
+                      <widget class="QLineEdit" name="txtAudioTone_2">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -3141,7 +3197,7 @@ QSlider::groove:horizontal {
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="txtCutStart_23">
+                      <widget class="QLineEdit" name="txtEditAudio">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -3268,7 +3324,7 @@ QSlider::groove:horizontal {
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="txtCutStart_18">
+                      <widget class="QLineEdit" name="txtFadeIn">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -3369,7 +3425,7 @@ QSlider::groove:horizontal {
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="txtCutStart_24">
+                      <widget class="QLineEdit" name="txtFadeOut">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -3455,7 +3511,7 @@ QPushButton:pressed {
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_9">
+                       <widget class="QPushButton" name="btnSaveAudioSetting">
                         <property name="sizePolicy">
                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                           <horstretch>0</horstretch>
