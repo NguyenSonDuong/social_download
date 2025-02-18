@@ -1,8 +1,8 @@
-Pytube>=15.0.0  # Nên kiểm tra phiên bản mới nhất trên PyPI
-instaloader>=4.10 # Nên kiểm tra phiên bản mới nhất trên PyPI
-moviepy>=2.1.2  # Nên kiểm tra phiên bản mới nhất trên PyPI
-requests>=2.30.0 # Nên kiểm tra phiên bản mới nhất trên PyPI
-selenium>=4.10.0 # Nên kiểm tra phiên bản mới nhất trên PyPI
+Pytube>=15.0.0  
+instaloader>=4.10 
+moviepy>=2.1.2  
+requests>=2.30.0 
+selenium>=4.10.0 
 yt-dlp>=2025.1.26
 pytubefix>=8.12.0
 PyQt5>=5.15.11
