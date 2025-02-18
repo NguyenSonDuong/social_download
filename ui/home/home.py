@@ -11,7 +11,7 @@ from datetime import datetime, timedelta
 import re
 import os
 import json
-
+from edit.editvideo import EditVideo
 
 class WorkerThread(QThread):
     # Tạo 4 tín hiệu tương ứng với 4 hàm cần truyền
@@ -20,7 +20,7 @@ class WorkerThread(QThread):
     processDownloadVideo = pyqtSignal(float, float, float, float, int)
     processError = pyqtSignal(str, int)
 
-    def __init__(self,  url,count, order, from_date, to_date, download_folder):
+    def __init__(self,  url,count, order, from_date, to_date, download_folder, setting):
         super().__init__()
         self.url = url
         self.count=count 
@@ -28,6 +28,8 @@ class WorkerThread(QThread):
         self.from_date = from_date
         self.to_date=to_date 
         self.download_folder = download_folder
+        self.setting = setting
+        self.edit = EditVideo()
 
     def run(self):
         """Hàm chạy trong thread"""
@@ -39,6 +41,7 @@ class WorkerThread(QThread):
             self.processDownloadVideo.emit
         )
         youtube.run(self.url,self.count, self.order, self.from_date, self.to_date, self.download_folder)
+        
 
 class QuantityVideoChannel(QThread):
     # Tạo 4 tín hiệu tương ứng với 4 hàm cần truyền
@@ -58,7 +61,6 @@ class QuantityVideoChannel(QThread):
             None
         )
         self.processInfo.emit(youtube.getTotalVideoChannel(self.url))
-
 
 class LoadingOverlay(QFrame):
     def __init__(self, parent=None, gif_path="loading.gif"):
@@ -414,7 +416,6 @@ class Ui_HomeWindow(QMainWindow):
         self.editVolumeSizeLayout.setAlignment(Qt.AlignLeft)
         self.bigToSmallVolume.setAlignment(Qt.AlignLeft)
         self.smallToBigVolumeLayout.setAlignment(Qt.AlignLeft)
-
 
         self.editVideoSaveResetLayout.setAlignment(Qt.AlignRight)
         self.editColorSaveResetLayout.setAlignment(Qt.AlignRight)

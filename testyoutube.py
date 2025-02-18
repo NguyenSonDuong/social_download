@@ -1,124 +1,86 @@
-import requests
-from datetime import datetime
-import re
-from bs4 import BeautifulSoup
-import time
-import random
-API_KEY = "AIzaSyC6XAJGYvbDHiLYFGpv8BpUz9PRSNwIQEA"
-def GetInfoChannel(url, order, from_date, to_date,nextpagetoken):
+import cv2
+import numpy as np
+from moviepy.editor import VideoFileClip, ColorClip, clips_array,concatenate_videoclips
 
-    if is_valid_youtube_handle(url):
-        CHANNEL_ID = GetIdChannel(url)
-    else:
-        CHANNEL_ID = extract_channel_id(url)
+def convert_video_aspect_ratio(input_path, output_path, aspect_ratio="9:16"):
+    # Đọc video
+    clip = VideoFileClip(input_path)
+    orig_width, orig_height = clip.size
 
-    if not CHANNEL_ID or CHANNEL_ID == "":
-        print("Không lấy được ID Youtube")
+    # Xác định tỷ lệ khung hình mới
+    new_aspect_w, new_aspect_h = map(int, aspect_ratio.split(":"))
+    new_width = 1080  # Chiều rộng chuẩn (có thể điều chỉnh)
+    new_height = int(new_width * new_aspect_h / new_aspect_w)
 
-    # API Endpoint để lấy video từ kênh
-    base_url = "https://www.googleapis.com/youtube/v3/search"
+    # Tính tỷ lệ thu nhỏ để giữ nguyên tỷ lệ video gốc
+    scale_w = new_width / orig_width
+    scale_h = new_height / orig_height
+    scale_factor = min(scale_w, scale_h)
 
-    params = {
-        "part": "snippet",
-        "channelId": CHANNEL_ID,
-        "order": order,
-        "maxResults": 50,  # Số lượng video tối đa mỗi lần gọi API
-        "type": "video",
-        "key": API_KEY
-    }
-    if nextpagetoken:
-        params["pageToken"] = nextpagetoken
-    # Gửi yêu cầu API để lấy danh sách video
-    response = requests.get(base_url, params=params)
-    data = response.json()
-    
-    filtered_videos = []
-    for item in data.get("items", []):
-        video_id = item["id"]["videoId"]
-        title = item["snippet"]["title"]
-        kind = item["id"]["kind"]
-        publish_date = item["snippet"]["publishedAt"]
-        publish_datetime = datetime.strptime(publish_date, "%Y-%m-%dT%H:%M:%SZ")
+    # Kích thước video sau khi thu nhỏ
+    resized_width = int(orig_width * scale_factor)
+    resized_height = int(orig_height * scale_factor)
+
+    def process_frame(frame):
+        # Chuyển frame thành OpenCV (BGR)
+        frame = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
         
-        # Kiểm tra nếu video nằm trong khoảng thời gian mong muốn
-        if from_date <= publish_datetime <= to_date:
-            video_url = f"https://www.youtube.com/watch?v={video_id}"
-            filtered_videos.append((video_id,title, kind, video_url, publish_datetime.strftime(r"%Y-%m-%d")))
-    nextpagetoken = data.get("nextPageToken")
-    if nextpagetoken:
-        return filtered_videos, nextpagetoken
+        # Resize video theo tỷ lệ giữ nguyên
+        resized_frame = cv2.resize(frame, (resized_width, resized_height))
+
+        # Tạo khung nền đen
+        background = np.zeros((new_height, new_width, 3), dtype=np.uint8)
+
+        # Tính vị trí chèn video vào giữa
+        x_offset = (new_width - resized_width) // 2
+        y_offset = (new_height - resized_height) // 2
+
+        # Chèn video vào giữa khung nền
+        background[y_offset:y_offset+resized_height, x_offset:x_offset+resized_width] = resized_frame
+
+        # Chuyển lại thành định dạng RGB cho MoviePy
+        return cv2.cvtColor(background, cv2.COLOR_BGR2RGB)
+
+    # Áp dụng xử lý từng frame
+    new_clip = clip.fl_image(process_frame)
+
+    # Xuất video
+    new_clip.write_videofile(output_path, codec="libx264", fps=clip.fps)
+
+# Ví dụ sử dụng
+# convert_video_aspect_ratio("E:\downloadvideo\QUY-TẦM-REMIX-BT-REMIX-归寻-等什么君-Nhạc-Trung-Remix-Hot-TikTok.webm", "output.mp4", "9:16")
+def merge_videos(video1_path, video2_path, output_path, mode="va"):
+    # Đọc hai video
+    # Đọc hai video
+    clip1 = VideoFileClip(video1_path)
+    clip2 = VideoFileClip(video2_path)
+
+    # Xác định thời lượng lớn nhất
+    max_duration = max(clip1.duration, clip2.duration)
+
+    # Đảm bảo cả hai video có cùng thời lượng bằng cách thêm nền đen vào video ngắn hơn
+    def pad_video(clip, target_duration):
+        if clip.duration < target_duration:
+            black_bg = ColorClip(size=(clip.w, clip.h), color=(0, 0, 0), duration=target_duration - clip.duration)
+            return concatenate_videoclips([clip, black_bg])
+        return clip
+
+    clip1 = pad_video(clip1, max_duration)
+    clip2 = pad_video(clip2, max_duration)
+
+    # Điều chỉnh kích thước video để có cùng chiều rộng hoặc chiều cao
+    if mode == "horizontal":
+        new_height = min(clip1.h, clip2.h)  # Đảm bảo cùng chiều cao
+        clip1 = clip1.resize(height=new_height)
+        clip2 = clip2.resize(height=new_height)
+        final_clip = clips_array([[clip1, clip2]])  # Ghép ngang
     else:
-        return filtered_videos, None
+        new_width = min(clip1.w, clip2.w)  # Đảm bảo cùng chiều rộng
+        clip1 = clip1.resize(width=new_width)
+        clip2 = clip2.resize(width=new_width)
+        final_clip = clips_array([[clip1], [clip2]])  # Ghép dọc
 
-def getTotalVideoChannel():
-    url = "https://www.youtube.com/@H2ORemix88"
-    if is_valid_youtube_handle(url):
-        CHANNEL_ID = GetIdChannel(url)
-    else:
-        CHANNEL_ID = extract_channel_id(url)
-# API Endpoint
-    url = "https://www.googleapis.com/youtube/v3/channels"
+    # Xuất video cuối cùng
+    final_clip.write_videofile(output_path, codec="libx264", fps=clip1.fps)
 
-    # Gửi request để lấy số lượng video
-    params = {
-        "part": "statistics",
-        "id": CHANNEL_ID,
-        "key": API_KEY
-    }
-
-    response = requests.get(url, params=params)
-    data = response.json()
-
-# Lấy tổng số video
-    if "items" in data and len(data["items"]) > 0:
-        video_count = data["items"][0]["statistics"]["videoCount"]
-        print(f"Tổng số video trên kênh: {video_count}")
-    else:
-        print("Không tìm thấy thông tin kênh!")
-
-def GetIdChannel(url):
-    response = requests.get(url)
-    soup = BeautifulSoup(response.text, "html.parser")
-    meta_tag = soup.find("meta", {"property": "al:ios:url"})
-    if meta_tag:
-        href_value = meta_tag.get("content")
-        pattern = r"www\.youtube\.com/channel/([\w-]+)"
-        match = re.search(pattern, href_value)
-
-        if match:
-            channel_id = match.group(1)
-            print(f"Channel ID: {channel_id}")
-            return channel_id
-        else:
-            print("Không tìm thấy Channel ID!")
-            return ""
-        # print(f"Href: {href_value}")
-    else:
-        print("Không tìm thấy thẻ <link> phù hợp!")
-        return ""
-    
-def is_valid_youtube_handle(url):
-    # Regex để kiểm tra định dạng https://www.youtube.com/@handle
-    pattern = r"^https://www\.youtube\.com/@[\w\d_-]+$"
-    
-    # Kiểm tra URL
-    return bool(re.match(pattern, url))
-
-def extract_channel_id(url):
-    pattern = r"https://www\.youtube\.com/channel/([\w-]+)"
-    match = re.search(pattern, url)
-    return match.group(1) if match else None
-
-
-# # 
-# stop = False
-# to_time = datetime.now()
-# from_time = datetime(1990, 1, 1)
-# nextpagetoken = None
-# while not stop:
-#     filtered_videos, nextpagetoken = GetInfoChannel("https://www.youtube.com/@H2ORemix88","date",from_time,to_time,nextpagetoken)
-#     print(filtered_videos)
-#     time.sleep(random.randint(0,3))
-#     print("Page next=============================================================>")
-
-getTotalVideoChannel()
+merge_videos("E:\downloadvideo\QUY-TẦM-REMIX-BT-REMIX-归寻-等什么君-Nhạc-Trung-Remix-Hot-TikTok.webm", "E:\downloadvideo\One-More-Night-Maroon-5-Noper-Remix-Nhac-Remix-Hot-Trend-Tiktok.webm","ouy.mp4")
