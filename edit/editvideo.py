@@ -1,10 +1,5 @@
-import cv2
-import numpy as np
-import moviepy.editor as mp
-import moviepy.video.fx.all as vfx
-from moviepy.editor import VideoFileClip, ColorClip, clips_array,concatenate_videoclips
-from moviepy.video.fx.all import resize, speedx
-from moviepy.audio.fx.all import volumex, audio_fadein, audio_fadeout
+import subprocess
+import os
 
 class EditVideo:
 
@@ -12,155 +7,150 @@ class EditVideo:
         self.input_path = input_path
         self.setting = setting
 
-    def convert_video_aspect_ratio(self, aspect_ratio="9:16"):
-    # Đọc video
-        clip = VideoFileClip(self.input_path)
-        orig_width, orig_height = clip.size
 
-        original_ratio = round(orig_width / orig_height, 2)
-    
-    # Chuyển aspect_ratio thành số thực để so sánh
-        new_aspect_w, new_aspect_h = map(int, aspect_ratio.split(":"))
-        target_ratio = round(new_aspect_w / new_aspect_h, 2)
 
-        # Nếu video đã có đúng tỷ lệ mong muốn, bỏ qua việc chuyển đổi
-        if original_ratio == target_ratio:
-            print(f"Video đã có tỷ lệ {aspect_ratio}, không cần chuyển đổi.")
-            return
+    def edit_video(
+            input_path, output_path,
+            aspect_ratio=None, speed=None,
+            cut_start=None, cut_end=None, cut_interval=None,
+            bg_path=None, intro_path=None, outro_path=None,
+            merge_with=None, merge_type="side",
+            opacity=None, red=None, green=None, blue=None,
+            brightness=None, saturation=None, gamma=None, hue=None, contrast=None,
+            bg_music=None, flip_horizontal=False, flip_vertical=False
+        ):
+        filters = []
 
-        # Xác định tỷ lệ khung hình mới
-        new_aspect_w, new_aspect_h = map(int, aspect_ratio.split(":"))
-        new_width = 1080  # Chiều rộng chuẩn (có thể điều chỉnh)
-        new_height = int(new_width * new_aspect_h / new_aspect_w)
+        # 📌 Thay đổi khung hình
+        if aspect_ratio == "16:9":
+            filters.append("scale=w=min(iw\\,1920):h=-2, pad=1920:1080:(ow-iw)/2:(oh-ih)/2:black")
+        elif aspect_ratio == "9:16":
+            filters.append("scale=h=min(ih\\,1920):w=-2, pad=1080:1920:(ow-iw)/2:(oh-ih)/2:black")
+        elif aspect_ratio == "4:3":
+            filters.append("scale=w=min(iw\\,1440):h=-2, pad=1440:1080:(ow-iw)/2:(oh-ih)/2:black")
 
-        # Tính tỷ lệ thu nhỏ để giữ nguyên tỷ lệ video gốc
-        scale_w = new_width / orig_width
-        scale_h = new_height / orig_height
-        scale_factor = min(scale_w, scale_h)
+        # 📌 Tăng tốc độ video
+        if speed is not None:
+            filters.append(f"setpts={1/speed}*PTS")
 
-        # Kích thước video sau khi thu nhỏ
-        resized_width = int(orig_width * scale_factor)
-        resized_height = int(orig_height * scale_factor)
-
-        def process_frame(frame):
-            # Chuyển frame thành OpenCV (BGR)
-            frame = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
-            
-            # Resize video theo tỷ lệ giữ nguyên
-            resized_frame = cv2.resize(frame, (resized_width, resized_height))
-
-            # Tạo khung nền đen
-            background = np.zeros((new_height, new_width, 3), dtype=np.uint8)
-
-            # Tính vị trí chèn video vào giữa
-            x_offset = (new_width - resized_width) // 2
-            y_offset = (new_height - resized_height) // 2
-
-            # Chèn video vào giữa khung nền
-            background[y_offset:y_offset+resized_height, x_offset:x_offset+resized_width] = resized_frame
-
-            # Chuyển lại thành định dạng RGB cho MoviePy
-            return cv2.cvtColor(background, cv2.COLOR_BGR2RGB)
-
-        # Áp dụng xử lý từng frame
-        new_clip = clip.fl_image(process_frame)
-
-        # Xuất video
-        new_clip.write_videofile(self.setting["edit_video"]["save_folder_edit_video"], codec="libx264", fps=clip.fps)
-
-    def speed_up_video(self, factor=2):
-        clip = mp.VideoFileClip(self.input_path)
-        new_clip = speedx(clip, factor)
-        new_clip.write_videofile(self.output_path, codec="libx264")
-
-    def trim_video(self, mode="start"):
-        clip = mp.VideoFileClip(self.input_path)
-        if mode == "start":
-            new_clip = clip.subclip(3, clip.duration)
-        elif mode == "end":
-            new_clip = clip.subclip(0, clip.duration - 3)
-        elif mode == "interval":
-            new_clip = mp.concatenate_videoclips([clip.subclip(i, i+1) for i in range(0, int(clip.duration), 5)])
-        new_clip.write_videofile(self.output_path, codec="libx264")
-
-    def merge_videos(self, extra_video, position="start"):
-        main_clip = mp.VideoFileClip(self.input_path)
-        extra_clip = mp.VideoFileClip(extra_video)
-        if position == "start":
-            final_clip = mp.concatenate_videoclips([extra_clip, main_clip])
-        else:
-            final_clip = mp.concatenate_videoclips([main_clip, extra_clip])
-        final_clip.write_videofile(self.output_path, codec="libx264")
-
-    def adjust_color(self, mode="basic", opacity=1.0, red=1.0, green=1.0, blue=1.0, 
-                    brightness=1.0, saturation=1.0, gamma=1.0, hue=0.0):
-        video = mp.VideoFileClip(self.input_path).fx(vfx.colorx, brightness)
-
-        if mode == "basic":
-            # Điều chỉnh màu cơ bản
-            video = video.fl_image(lambda frame: np.clip(frame * [red, green, blue], 0, 255).astype(np.uint8))
-            video = video.set_opacity(opacity)
+        # 📌 Chỉnh sửa màu sắc
+        color_filter = []
+        if opacity is not None:
+            color_filter.append(f"colorchannelmixer=aa={opacity}")
+        if red is not None:
+            color_filter.append(f"colorchannelmixer=rr={red}")
+        if green is not None:
+            color_filter.append(f"colorchannelmixer=gg={green}")
+        if blue is not None:
+            color_filter.append(f"colorchannelmixer=bb={blue}")
+        if brightness is not None:
+            color_filter.append(f"eq=brightness={brightness}")
+        if saturation is not None:
+            color_filter.append(f"eq=saturation={saturation}")
+        if gamma is not None:
+            color_filter.append(f"eq=gamma={gamma}")
+        if hue is not None:
+            color_filter.append(f"hue=h={hue}")
+        if contrast is not None:
+            color_filter.append(f"eq=contrast={contrast}")
         
-        elif mode == "advanced":
-            # Điều chỉnh saturation, gamma, hue
-            video = video.fx(vfx.colorx, saturation)
-            video = video.fx(vfx.gamma_corr, gamma)
-            video = video.fx(vfx.hue, hue)
+        if color_filter:
+            filters.append(",".join(color_filter))
 
-        video.write_videofile(self.output_path, codec="libx264", fps=video.fps)
+        # 📌 Lật video
+        if flip_horizontal:
+            filters.append("hflip")
+        if flip_vertical:
+            filters.append("vflip")
 
-    def adjust_volume(self, volume_factor=1.0):
-        clip = mp.VideoFileClip(self.input_path)
-        new_clip = clip.volumex(volume_factor)
-        new_clip.write_videofile(self.output_path, codec="libx264", audio_codec="aac")
+        # 📌 Cắt video
+        if cut_start:
+            filters.append(f"trim=start={cut_start}")
+        if cut_end:
+            filters.append(f"trim=end={cut_end}")
+        if cut_interval:
+            filters.append("select='not(mod(n,150))',setpts=N/FRAME_RATE/TB")
 
-    def add_background_music(self, music_path, volume=0.5):
-        video_clip = mp.VideoFileClip(self.input_path)
-        audio_clip = mp.AudioFileClip(music_path).volumex(volume).set_duration(video_clip.duration)
-        final_audio = mp.CompositeAudioClip([video_clip.audio, audio_clip])
-        video_clip = video_clip.set_audio(final_audio)
-        video_clip.write_videofile(self.output_path, codec="libx264", audio_codec="aac")
+        # 📌 Thêm background video hoặc ảnh
+        if bg_path:
+            filters.append(f"[1:v]scale=1280:720[bg];[bg][0:v]overlay=W/2-w/2:H/2-h/2")
 
-    def distort_audio(self,audio_fadein, audio_fadeout,fade_type="in", duration=3):
-        video_clip = mp.VideoFileClip(self.input_path)
-        if fade_type == "in":
-            audio_clip = video_clip.audio.fx(audio_fadein, duration)
+        # 📌 Tạo chuỗi filter
+        filter_str = ",".join(filters) if filters else "null"
+
+        # 📌 Lệnh FFmpeg
+        cmd = ["ffmpeg", "-i", input_path, "-vf", filter_str]
+
+        # 📌 Thêm background video hoặc ảnh
+        if bg_path:
+            cmd = ["ffmpeg", "-i", bg_path, "-i", input_path, "-filter_complex", filter_str]
+
+        # 📌 Thêm nhạc nền
+        if bg_music:
+            cmd += ["-i", bg_music, "-filter_complex", "[0:a][1:a]amix=inputs=2:duration=first:dropout_transition=3"]
+
+        # 📌 Lồng intro/outro
+        if intro_path or outro_path:
+            temp_video = "temp_video.mp4"
+            subprocess.run(cmd + ["-c:v", "libx264", "-preset", "fast", temp_video])
+            concat_cmd = [
+                "ffmpeg", "-i", intro_path, "-i", temp_video, "-i", outro_path,
+                "-filter_complex", "[0:v:0][0:a:0][1:v:0][1:a:0][2:v:0][2:a:0]concat=n=3:v=1:a=1[outv][outa]",
+                "-map", "[outv]", "-map", "[outa]", output_path
+            ]
+            subprocess.run(concat_cmd)
+            return
+        
+        # 📌 Ghép video (trái/phải/trên/dưới)
+        if merge_with:
+            merge_filter = "[0:v][1:v]hstack=inputs=2[v]" if merge_type == "side" else "[0:v][1:v]vstack=inputs=2[v]"
+            cmd = ["ffmpeg", "-i", input_path, "-i", merge_with, "-filter_complex", merge_filter, "-map", "[v]", output_path]
         else:
-            audio_clip = video_clip.audio.fx(audio_fadeout, duration)
-        video_clip = video_clip.set_audio(audio_clip)
-        video_clip.write_videofile(self.output_path, codec="libx264", audio_codec="aac")
+            cmd += ["-c:v", "libx264", "-preset", "fast", output_path]
 
-    def merge_videos(video1_path, video2_path, output_path):
-        clip1 = VideoFileClip(video1_path)
-        clip2 = VideoFileClip(video2_path)
+        # 📌 Chạy lệnh FFmpeg
+        subprocess.run(cmd)
 
-        # Xác định thời lượng lớn nhất
-        max_duration = max(clip1.duration, clip2.duration)
+    def merge_videos(
+        main_video, extra_video, output_path, position="right"
+    ):
+        # 📌 Lấy thời lượng video
+        get_duration_cmd = lambda vid: f'ffprobe -i "{vid}" -show_entries format=duration -v quiet -of csv="p=0"'
+        main_duration = float(subprocess.check_output(get_duration_cmd(main_video), shell=True).decode().strip())
+        extra_duration = float(subprocess.check_output(get_duration_cmd(extra_video), shell=True).decode().strip())
 
-        def pad_video(clip, target_duration):
-            if clip.duration < target_duration:
-                black_bg = ColorClip(size=(clip.w, clip.h), color=(0, 0, 0), duration=target_duration - clip.duration)
-                return concatenate_videoclips([clip, black_bg])
-            return clip
+        max_duration = max(main_duration, extra_duration)
 
-        clip1 = pad_video(clip1, max_duration)
-        clip2 = pad_video(clip2, max_duration)
-
-        # Điều chỉnh kích thước video để có cùng chiều rộng hoặc chiều cao
-        if mode == "horizontal":
-            new_height = min(clip1.h, clip2.h)  # Đảm bảo cùng chiều cao
-            clip1 = clip1.resize(height=new_height)
-            clip2 = clip2.resize(height=new_height)
-            final_clip = clips_array([[clip1, clip2]])  # Ghép ngang
+        # 📌 Tạo video nền đen nếu video ngắn hơn
+        black_bg = f"color=c=black:s=1920x1080:d={max_duration}[black];"
+        
+        if main_duration < max_duration:
+            main_pad = f"[0:v]trim=duration={main_duration},setpts=PTS-STARTPTS,pad=1920:1080:black[main_vid];"
         else:
-            new_width = min(clip1.w, clip2.w)  # Đảm bảo cùng chiều rộng
-            clip1 = clip1.resize(width=new_width)
-            clip2 = clip2.resize(width=new_width)
-            final_clip = clips_array([[clip1], [clip2]])  # Ghép dọc
+            main_pad = "[0:v]setpts=PTS-STARTPTS[main_vid];"
 
-        # Xuất video cuối cùng
-        final_clip.write_videofile(output_path, codec="libx264", fps=clip1.fps)
- 
+        if extra_duration < max_duration:
+            extra_pad = f"[1:v]trim=duration={extra_duration},setpts=PTS-STARTPTS,pad=1920:1080:black[extra_vid];"
+        else:
+            extra_pad = "[1:v]setpts=PTS-STARTPTS[extra_vid];"
+
+        # 📌 Xác định cách ghép video
+        if position == "left":
+            merge_filter = "[main_vid]scale=960:1080[right];[extra_vid]scale=960:1080[left];[left][right]hstack=inputs=2[outv]"
+        elif position == "right":
+            merge_filter = "[main_vid]scale=960:1080[left];[extra_vid]scale=960:1080[right];[left][right]hstack=inputs=2[outv]"
+        elif position == "top":
+            merge_filter = "[main_vid]scale=1920:540[bottom];[extra_vid]scale=1920:540[top];[top][bottom]vstack=inputs=2[outv]"
+        elif position == "bottom":
+            merge_filter = "[main_vid]scale=1920:540[top];[extra_vid]scale=1920:540[bottom];[top][bottom]vstack=inputs=2[outv]"
+        else:
+            raise ValueError("Vị trí không hợp lệ! Chọn: left, right, top, bottom.")
+
+        # 📌 Chạy FFmpeg
+        ffmpeg_cmd = f'ffmpeg -i "{main_video}" -i "{extra_video}" -filter_complex "{black_bg}{main_pad}{extra_pad}{merge_filter}" -map "[outv]" -map 0:a? -map 1:a? -shortest "{output_path}"'
+        
+        subprocess.run(ffmpeg_cmd, shell=True)
+
     def run(self):
         frame = ""
         if self.setting["edit_video"]["frame"] == "1":
@@ -196,7 +186,27 @@ class EditVideo:
         top_video = self.setting["edit_video"]["top_video"]
         bottom_video = self.setting["edit_video"]["bottom_video"]
 
-        if
+        # edit_video(
+        #     input_path="input.mp4",
+        #     output_path="output.mp4",
+        #     aspect_ratio=frame,
+        #     speed=speed,
+        #     cut_start=3, 
+        #     cut_end=3, 
+        #     cut_interval=True,
+        #     bg_path="background.jpg",
+        #     intro_path=intro, 
+        #     outro_path=outtro,
+        #     merge_with="video2.mp4", 
+        #     merge_type="side",
+        #     opacity=0.5, red=1.2, green=1.1, blue=0.9,
+        #     brightness=0.1, saturation=1.2, gamma=1.5, hue=0.05, contrast=1.3,
+        #     bg_music="music.mp3",
+        #     flip_horizontal=True, 
+        #     flip_vertical=False
+        # )
+ 
+
 
         
 

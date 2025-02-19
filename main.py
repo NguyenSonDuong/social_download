@@ -10,7 +10,6 @@ def process(funtion_name, messgae):
 
 
 if __name__ == "__main__":
-
     app = QApplication(sys.argv)
     home = Ui_HomeWindow()
     sys.exit(app.exec_())
