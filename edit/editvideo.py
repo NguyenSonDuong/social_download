@@ -8,7 +8,6 @@ class EditVideo:
         self.setting = setting
 
 
-
     def edit_video(
             input_path, output_path,
             aspect_ratio=None, speed=None,

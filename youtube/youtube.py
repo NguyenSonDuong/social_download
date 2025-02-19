@@ -266,28 +266,21 @@ class Youtube:
 
 
             if count <0:
-                for video in videos:
-                    self._processDownload(videoDownload,videoError,YoutubeStatus.START)
-                    self._processDownload(videoDownload,videoError,YoutubeStatus.PROCESS)
-                    status = self.download_video(video,download_folder)
-                    if status:
-                        videoDownload.append(video)
-                        self._processDownload([video],[],YoutubeStatus.DONE_ONE)
-                    else:
-                        videoError.append(video)
-                        self._processDownload(videoDownload,video,YoutubeStatus.ERROR)
+                videos = videos
             else:
-                for step in range(0,count):
-                    self._processDownload(videoDownload,videoError,YoutubeStatus.START)
-                    self._processDownload(videoDownload,videoError,YoutubeStatus.PROCESS)
-                    status = self.download_video(videos[step],download_folder)
-                    if status:
-                        videoDownload.append(videos[step])
-                        self._processDownload([videos[step]],[],YoutubeStatus.DONE_ONE)
-                    else:
-                        videoError.append(videos[step])
-                        self._processDownload(videoDownload,[videos[step]],YoutubeStatus.ERROR)
-            self._processDownload(videoDownload,videoError,YoutubeStatus.DONE)
+                videos = videos[0:count]
+                
+            for video in videos:
+                self._processDownload(len(videos),videoDownload,videoError,YoutubeStatus.START)
+                self._processDownload(len(videos),videoDownload,videoError,YoutubeStatus.PROCESS)
+                status = self.download_video(video,download_folder)
+                if status:
+                    videoDownload.append(video)
+                    self._processDownload(len(videos),[video],[],YoutubeStatus.DONE_ONE)
+                else:
+                    videoError.append(video)
+                    self._processDownload(len(videos),videoDownload,video,YoutubeStatus.ERROR)
+            self._processDownload(len(videos),videoDownload,videoError,YoutubeStatus.DONE)
         except Exception as ex:
             self._processError(str(ex), YoutubeStatus.ERROR)
 

@@ -4,7 +4,6 @@ from youtube.youtube import  Youtube, YoutubeStatus
 from PyQt5.QtGui import QColor, QPainter, QTextCharFormat, QColor, QTextCursor
 from PyQt5.QtCore import Qt, QPoint,QEvent
 from PyQt5.QtWidgets import QButtonGroup ,QFrame, QVBoxLayout,QLabel,QApplication,QCalendarWidget,QPushButton,QFileDialog
-from douyin.douyin_key import Option as opDouyin
 import sys
 from PyQt5.QtCore import QThread, pyqtSignal
 from datetime import datetime, timedelta
@@ -12,15 +11,16 @@ import re
 import os
 import json
 from edit.editvideo import EditVideo
+from douyin.douyin_once.douyin import Douyin, DouyinStatus
 
 class WorkerThread(QThread):
     # Tạo 4 tín hiệu tương ứng với 4 hàm cần truyền
     processInfo = pyqtSignal(int, int)
-    processDownload = pyqtSignal(list, list, int)
+    processDownload = pyqtSignal(int,list, list, int)
     processDownloadVideo = pyqtSignal(float, float, float, float, int)
     processError = pyqtSignal(str, int)
 
-    def __init__(self,  url,count, order, from_date, to_date, download_folder, setting):
+    def __init__(self,  url,count, order, from_date, to_date, download_folder):
         super().__init__()
         self.url = url
         self.count=count 
@@ -28,8 +28,6 @@ class WorkerThread(QThread):
         self.from_date = from_date
         self.to_date=to_date 
         self.download_folder = download_folder
-        self.setting = setting
-        self.edit = EditVideo()
 
     def run(self):
         """Hàm chạy trong thread"""
@@ -41,6 +39,30 @@ class WorkerThread(QThread):
             self.processDownloadVideo.emit
         )
         youtube.run(self.url,self.count, self.order, self.from_date, self.to_date, self.download_folder)
+        
+class WorkerThreadDouyin(QThread):
+    # Tạo 4 tín hiệu tương ứng với 4 hàm cần truyền
+    processInfo = pyqtSignal(int, int)
+    processDownload = pyqtSignal(int,list, list, int)
+    processError = pyqtSignal(str, int)
+    
+    def __init__(self,  id,count, from_date, to_date, download_folder):
+        super().__init__()
+        self.id = id
+        self.count=count 
+        self.from_date = from_date
+        self.to_date=to_date 
+        self.download_folder = download_folder
+
+    def run(self):
+        """Hàm chạy trong thread"""
+        # Tạo đối tượng VideoProcessor và truyền các tín hiệu xuống lớp
+        douyin = Douyin(
+            self.processInfo.emit,  
+            self.processDownload.emit,
+            self.processError.emit 
+        )
+        douyin.run(self.id,self.count, self.from_date, self.to_date, self.download_folder)
         
 
 class QuantityVideoChannel(QThread):
@@ -67,6 +89,7 @@ class LoadingOverlay(QFrame):
         super().__init__(parent)
         self.resize(parent.size())
         self.threadYoutube = None
+        self.threadDouyin = None
         self.setUIUX()
 
     def setUIUX(self):
@@ -159,7 +182,8 @@ class Ui_HomeWindow(QMainWindow):
         self.overlay = LoadingOverlay(self, "loading.gif")
         self.setAndRun()
         self.threadYoutube = None
-        
+        self.threadDouyin = None
+        self.typeDownload = "Douyin"
         self.overlay.setOverlayGeometry(self.mainLayout) 
         self.overlay.hide_overlay()
 
@@ -303,17 +327,30 @@ class Ui_HomeWindow(QMainWindow):
     def processInfo(self, numberVideo, status):
         print(f"Đã lấy được: {numberVideo} - {status}")
 
-    def processDownload(self, videoDownload, videoError,status):
+    # def processDownload(self, videoDownload, videoError,status):
+    #     if status == YoutubeStatus.DONE_ONE:
+    #         self.log(f"Đã tải xong: {videoDownload[0]["title"]}","green")
+    #     if status == YoutubeStatus.PROCESS:
+    #         self.overlay.frame.pnAllsBar.setMaximum(int(self.txtQuatityDownload.text()))
+    #         self.overlay.frame.pnAllsBar.setValue(len(videoDownload)+len(videoError))
+    #         print(f"Đã tải được: {len(videoDownload)} - Video tải lỗi: {len(videoError)} - {status}")
+    #     if status == YoutubeStatus.DONE:
+    #         self.overlay.hide_overlay()
+    #     if status == YoutubeStatus.ERROR:
+    #         self.log("Lỗi lấy thông số video! ")
+
+    def processDownload(self,total, videoDownload, videoError,status):
         if status == YoutubeStatus.DONE_ONE:
             self.log(f"Đã tải xong: {videoDownload[0]["title"]}","green")
         if status == YoutubeStatus.PROCESS:
-            self.overlay.frame.pnAllsBar.setMaximum(int(self.txtQuatityDownload.text()))
+            self.overlay.frame.pnAllsBar.setMaximum(total)
             self.overlay.frame.pnAllsBar.setValue(len(videoDownload)+len(videoError))
             print(f"Đã tải được: {len(videoDownload)} - Video tải lỗi: {len(videoError)} - {status}")
         if status == YoutubeStatus.DONE:
             self.overlay.hide_overlay()
         if status == YoutubeStatus.ERROR:
             self.log("Lỗi lấy thông số video! ")
+
 
     def processDownloadVideo(self,percent,speed,downloaded,total,status):
         if status == YoutubeStatus.PROCESS:
@@ -344,6 +381,20 @@ class Ui_HomeWindow(QMainWindow):
         self.threadYoutube.processError.connect(self.processError)
         self.overlay.threadYoutube = self.threadYoutube
         self.threadYoutube.start()
+
+    def startTaskDouyin(self, url,count, from_date, to_date, download_folder):
+        """Khởi chạy tiến trình"""
+        if self.threadDouyin  and self.threadDouyin.isRunning():
+            self.threadDouyin.wait()
+            self.threadDouyin.typeRun = 1
+        self.threadDouyin = WorkerThreadDouyin(url,count, from_date, to_date, download_folder)
+
+        # Kết nối tín hiệu từ Thread đến các hàm giao diện
+        self.threadDouyin.processInfo.connect(self.processInfo)
+        self.threadDouyin.processDownload.connect(self.processDownload)
+        self.threadDouyin.processError.connect(self.processError)
+        self.overlay.threadDouyin = self.threadDouyin
+        self.threadDouyin.start()   
 
     def onBtnRunClick(self,event):
 
@@ -396,9 +447,17 @@ class Ui_HomeWindow(QMainWindow):
         self.lbErrorSelectFolder.hide()
 
         self.overlay.show_overlay()
-
-        self.startTask(url,quantity,order,from_date,to_date,folder_download)
-
+        if self.typeDownload == "Youtube":
+            self.startTask(url,quantity,order,from_date,to_date,folder_download)
+        if self.typeDownload == "Douyin":
+            pattern = r"user/(MS4wLj[A-Za-z0-9_-]+)"
+            match = re.search(pattern, url)
+            if match:
+                user_id = match.group(1)
+                self.startTaskDouyin(user_id,quantity,from_date,to_date,folder_download)
+            else:
+                print("Không tìm thấy User ID")
+            
     def setupLayout(self):
         self.louMain.setAlignment(Qt.AlignTop)
 
@@ -528,6 +587,7 @@ class Ui_HomeWindow(QMainWindow):
         
         self.btnRun.clicked.connect(self.onBtnRunClick)
         self.btnSelectFolder.clicked.connect(self.onBtnSelectFolderClick)
+        self.btnSelectFolderSaveEdit.clicked.connect(self.onBtnSelectFolderSaveEditClick)
 
         self.btnSaveEditVideo.clicked.connect(self.onBtnSaveEditVideoClick)
         self.btnEditColorVideo.clicked.connect(self.onBtnEditColorVideoClick)
@@ -540,6 +600,12 @@ class Ui_HomeWindow(QMainWindow):
         self.lbErrorSelectFolder.hide()
         self.loadSettingFromFile()
         self.setupdSetting()
+
+        shadow = QGraphicsDropShadowEffect(self.btnDouyin)
+        shadow.setBlurRadius(15)  
+        shadow.setOffset(3, 3)  
+        shadow.setColor(QColor(0, 0, 0, 100)) 
+        self.btnDouyin.setGraphicsEffect(shadow)  
 
         self.show()
 
@@ -600,6 +666,12 @@ class Ui_HomeWindow(QMainWindow):
         if folder_path:  # Nếu người dùng chọn thư mục
             self.txtFolderSaveVideo.setText(f"{folder_path}")
 
+    def onBtnSelectFolderSaveEditClick(self,event):
+        folder_path = QFileDialog.getExistingDirectory(self, "Chọn thư mục", "")
+        
+        if folder_path:  # Nếu người dùng chọn thư mục
+            self.txtFolderSave.setText(f"{folder_path}")
+
     def setDateCalendarFrom(self, date):
         formatted_date = date.toString("dd/MM/yyyy")  # Định dạng ngày
         self.txtFromDate.setText(formatted_date)
@@ -653,6 +725,13 @@ class Ui_HomeWindow(QMainWindow):
                 shadow.setColor(QColor(0, 0, 0, 100)) 
                 obj.setGraphicsEffect(shadow)  
                 self._isClick = obj
+                if obj == self.btnDouyin:
+                    self.typeDownload = "Douyin"
+                    self.rdDownloadOld.setEnabled(False)
+                    self.rdDownloadOld.setChecked(False)
+                if obj == self.btnYoutube:
+                    self.typeDownload = "Youtube"
+                    self.rdDownloadOld.setEnabled(True)
         
         if obj == self.txtFromDate and event.type() == QEvent.MouseButtonPress:
             if self.calendarFrom.isVisible():

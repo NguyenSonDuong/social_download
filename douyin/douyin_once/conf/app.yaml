@@ -1,0 +1,71 @@
+douyin:
+  cookie: 's_v_web_id=verify_m6nhcsci_Jh4komLG_nHZL_4hPy_BCpL_w98FK2TPZ3fg; ttwid=1%7CT9Lxs4aFRi3LuogCgzI_7uOV6_vTfwJB-rh4pWpnJec%7C1738575726%7C31cd1a56cca14b8b68e292bbf6089679c8f5986709e3704f85557db7a3df98d2; UIFID_TEMP=5a0fbbb49c6c57acd77ca86d66dd2e8e2f1fcf7b3fa6b8a56e480f684bd085891a2faafc878acc3b1eb07a174b45fae4f4bcd97fb22389e623cb7cc21e4425116546ec65fb62a09b33accbe61acb0461; hevc_supported=true; fpk1=U2FsdGVkX1+lzYffwMWb+vGr1O88gAjuvxnHtgnNpHzfYqhnysJeiBoHybh0+V1FqtHNBfF9G5zDDXwQj8YVxg==; fpk2=41770e408d453f0e18b6cf535e220c84; odin_tt=fa2d4b032ef1d7a80a2ab9a6a967b2ebe867c6f504a2cce258f9943edd5911a51d56331984e184dcd88d056a8635ec5435127fb76aecb32aaf3ba9e07a2c4e6a2f83b627a8075922d38a5d8618a783f6; passport_csrf_token=b0421bb995aa9122e3fa495d575af94e; passport_csrf_token_default=b0421bb995aa9122e3fa495d575af94e; __security_mc_1_s_sdk_cert_key=a7c806e8-4239-b088; __security_mc_1_s_sdk_sign_data_key_web_protect=f94a7a4d-45fd-8c87; __security_mc_1_s_sdk_crypt_sdk=f9f65104-44ec-837f; bd_ticket_guard_client_web_domain=2; is_dash_user=1; UIFID=5a0fbbb49c6c57acd77ca86d66dd2e8e2f1fcf7b3fa6b8a56e480f684bd085891a2faafc878acc3b1eb07a174b45fae46e0ac61d7ee9111ef8e278c9b054e9c7cbcceedcd67f037fbb1f56f32d0337e3a61173329862f935d893379a64f929204ffd4a14c3801fe16c5106e302cd5d450011d38a0f5c307204165d5f84eaf5ee5a7858cfeebbc0ef9769aa9b4571ca43472eefeb646870196961afd5300df4bf; xgplayer_user_id=186651208530; __security_mc_1_s_sdk_sign_data_key_sso=4fc102a2-4322-bfae; FORCE_LOGIN=%7B%22videoConsumedRemainSeconds%22%3A180%2C%22isForcePopClose%22%3A1%7D; douyin.com; device_web_cpu_core=12; device_web_memory_size=8; architecture=amd64; csrf_session_id=e8a91d7591a65f020e527f3249ab077a; theme=%22light%22; SEARCH_RESULT_LIST_TYPE=%22single%22; x-web-secsdk-uid=f7dbca25-4ac1-4dae-93d0-e2a2ddcadd62; WallpaperGuide=%7B%22showTime%22%3A1739462556017%2C%22closeTime%22%3A0%2C%22showCount%22%3A3%2C%22cursor1%22%3A65%2C%22cursor2%22%3A20%7D; strategyABtestKey=%221739904966.203%22; vdg_s=1; bd_ticket_guard_client_data=eyJiZC10aWNrZXQtZ3VhcmQtdmVyc2lvbiI6MiwiYmQtdGlja2V0LWd1YXJkLWl0ZXJhdGlvbi12ZXJzaW9uIjoxLCJiZC10aWNrZXQtZ3VhcmQtcmVlLXB1YmxpYy1rZXkiOiJCQ2lLMmNlTnZoZ2NzckJkN0w1OHgrWmRHRHRnV21DSnRVSlIrYko3b1dlS25iNnRCVWw2Z0o1eHZGM0t1U29QRXN0M3NsTkNuV1JxRHFwK0JOS3dKT1k9IiwiYmQtdGlja2V0LWd1YXJkLXdlYi12ZXJzaW9uIjoyfQ%3D%3D; download_guide=%223%2F20250219%2F0%22; biz_trace_id=60d99a51; volume_info=%7B%22isUserMute%22%3Afalse%2C%22isMute%22%3Atrue%2C%22volume%22%3A0.985%7D; dy_swidth=1536; dy_sheight=864; xg_device_score=7.886212270271551; stream_recommend_feed_params=%22%7B%5C%22cookie_enabled%5C%22%3Atrue%2C%5C%22screen_width%5C%22%3A1536%2C%5C%22screen_height%5C%22%3A864%2C%5C%22browser_online%5C%22%3Atrue%2C%5C%22cpu_core_num%5C%22%3A12%2C%5C%22device_memory%5C%22%3A8%2C%5C%22downlink%5C%22%3A10%2C%5C%22effective_type%5C%22%3A%5C%224g%5C%22%2C%5C%22round_trip_time%5C%22%3A50%7D%22; home_can_add_dy_2_desktop=%221%22; IsDouyinActive=false; __ac_nonce=067b5192400e633d77222; stream_player_status_params=%22%7B%5C%22is_auto_play%5C%22%3A0%2C%5C%22is_full_screen%5C%22%3A0%2C%5C%22is_full_webscreen%5C%22%3A0%2C%5C%22is_mute%5C%22%3A1%2C%5C%22is_speed%5C%22%3A1%2C%5C%22is_visible%5C%22%3A0%7D%22; __ac_signature=_02B4Z6wo00f019FVMfQAAIDCKqYMv1-kF1fRdTVAAJPp47; __ac_referer=__ac_blank'
+  naming: '{create}_{desc}'
+  path: Download
+  timeout: 10
+  max_retries: 5
+  lyric: yes
+  max_connections: 5
+  max_counts: 0
+  max_tasks: 7
+  page_counts: 20
+
+tiktok:
+  cookie:
+  max_connections: 5
+  max_counts: 0
+  max_retries: 5
+  max_tasks: 5
+  naming: '{create}_{desc}'
+  page_counts: 5
+  path: Download
+  timeout: 10
+
+twitter:
+  path: Download
+  folderize: yes
+  mode: one
+  naming: '{create}_{desc}'
+  cookie:
+  interval: all
+  timeout: 10
+  max_retries: 5
+  max_connections: 5
+  max_counts: 0
+  max_tasks: 5
+  page_counts: 20
+
+weibo:
+  path: Download
+  folderize: yes
+  mode: post
+  naming: '{create}_{desc}'
+  cookie:
+  interval: all
+  timeout: 10
+  max_retries: 5
+  max_connections: 5
+  max_counts: 0
+  max_tasks: 5
+  page_counts: 20
+
+bark:
+  key:
+  token:
+  mode: get
+  url: "https://f2.wiki/"
+  retry: 3
+  ringtones: 1
+  icon: https://f2.wiki/f2-logo-with-shadow.png
+  level: active
+  volume: 5
+  call: 0
+  isArchive: 1
+  sound: birdsong
+  autoCopy: 1
+  title: F2
+  body: ""
+  call: 0
+  copy: ""
+  group: F2下载统计
+  badge: 1
