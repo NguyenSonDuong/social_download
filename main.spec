@@ -9,10 +9,10 @@ a = Analysis(
     datas=[  # Thêm tài nguyên (file cần thiết cho ứng dụng, như hình ảnh, file UI, file JSON)
         ('ui/setting', 'ui/setting'),
         ('ui/home', 'ui/home'),
-        ('douyin/douyin_once', 'douyin/douyin_once'),
+        # ('douyin/douyin_once/app.yaml', '.'),
     ],
     hiddenimports=[  # Nếu có thư viện ngoài không được phát hiện tự động, bạn có thể liệt kê ở đây
-        'pytube', 'instaloader', 'moviepy.editor', 'requests', 'selenium', 'yt_dlp', 'pytubefix',
+        'pytube', 'instaloader', 'moviepy', 'requests', 'selenium', 'yt_dlp', 'pytubefix',
         'opencv_python', 'numpy','PyQt5', 'PyQt5.QtCore', 'PyQt5.QtGui', 'PyQt5.QtWidgets','f2'
     ],
     hookspath=[],

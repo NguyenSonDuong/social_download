@@ -156,7 +156,7 @@ border: 2px}</string>
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap>img/close.png</pixmap>
+         <pixmap>C:/Users/kitter/.designer/backup/img/close.png</pixmap>
         </property>
        </widget>
        <widget class="QPushButton" name="btnClose">
@@ -177,7 +177,7 @@ background-color: rgba(255, 255, 255, 0);</string>
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>img/close.png</normaloff>img/close.png</iconset>
+          <normaloff>C:/Users/kitter/.designer/backup/img/close.png</normaloff>C:/Users/kitter/.designer/backup/img/close.png</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -204,7 +204,7 @@ background-color: rgba(255, 255, 255, 0);</string>
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>img/minus.png</normaloff>img/minus.png</iconset>
+          <normaloff>C:/Users/kitter/.designer/backup/img/minus.png</normaloff>C:/Users/kitter/.designer/backup/img/minus.png</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -289,7 +289,7 @@ background-color: rgba(255, 255, 255, 0);</string>
                  <string/>
                 </property>
                 <property name="pixmap">
-                 <pixmap>img/TikTok.png</pixmap>
+                 <pixmap>C:/Users/kitter/.designer/backup/img/TikTok.png</pixmap>
                 </property>
                 <property name="scaledContents">
                  <bool>true</bool>
@@ -395,7 +395,7 @@ color: black;
              </property>
              <property name="icon">
               <iconset>
-               <normaloff>img/TikTok.png</normaloff>img/TikTok.png</iconset>
+               <normaloff>../image/Tik Tok.png</normaloff>../image/Tik Tok.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -448,7 +448,7 @@ color: black;
              </property>
              <property name="icon">
               <iconset>
-               <normaloff>img/Youtube.png</normaloff>img/Youtube.png</iconset>
+               <normaloff>../image/Youtube.png</normaloff>../image/Youtube.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -501,7 +501,7 @@ color: black;
              </property>
              <property name="icon">
               <iconset>
-               <normaloff>img/Facebook.png</normaloff>img/Facebook.png</iconset>
+               <normaloff>../image/Facebook.png</normaloff>../image/Facebook.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -554,7 +554,7 @@ color: black;
              </property>
              <property name="icon">
               <iconset>
-               <normaloff>img/Instagram.png</normaloff>img/Instagram.png</iconset>
+               <normaloff>../image/Instagram.png</normaloff>../image/Instagram.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -607,7 +607,7 @@ color: black;
              </property>
              <property name="icon">
               <iconset>
-               <normaloff>img/Twitter.png</normaloff>img/Twitter.png</iconset>
+               <normaloff>../image/Twitter.png</normaloff>../image/Twitter.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -660,7 +660,7 @@ color: black;
              </property>
              <property name="icon">
               <iconset>
-               <normaloff>img/Snapchat.png</normaloff>img/Snapchat.png</iconset>
+               <normaloff>../image/Snapchat.png</normaloff>../image/Snapchat.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -713,7 +713,7 @@ color: black;
              </property>
              <property name="icon">
               <iconset>
-               <normaloff>img/QQ.png</normaloff>img/QQ.png</iconset>
+               <normaloff>../image/QQ.png</normaloff>../image/QQ.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -759,9 +759,9 @@ color: black;
             <property name="geometry">
              <rect>
               <x>0</x>
-              <y>-885</y>
-              <width>990</width>
-              <height>2872</height>
+              <y>-1319</y>
+              <width>1023</width>
+              <height>3072</height>
              </rect>
             </property>
             <property name="styleSheet">
@@ -823,7 +823,7 @@ background-color: rgb(255, 255, 255);
                         <string/>
                        </property>
                        <property name="pixmap">
-                        <pixmap>img/TikTok.png</pixmap>
+                        <pixmap>../image/Tik Tok.png</pixmap>
                        </property>
                        <property name="scaledContents">
                         <bool>true</bool>
@@ -1575,6 +1575,24 @@ QPushButton:pressed {
                           <item>
                            <layout class="QHBoxLayout" name="selectFrame">
                             <item>
+                             <widget class="QRadioButton" name="rdFrameNoChange">
+                              <property name="sizePolicy">
+                               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                               </sizepolicy>
+                              </property>
+                              <property name="font">
+                               <font>
+                                <pointsize>-1</pointsize>
+                               </font>
+                              </property>
+                              <property name="text">
+                               <string>Giữ nguyên</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
                              <widget class="QRadioButton" name="rd169">
                               <property name="sizePolicy">
                                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -1741,6 +1759,23 @@ QPushButton:pressed {
                           </layout>
                          </widget>
                         </item>
+                        <item>
+                         <widget class="QLabel" name="lbErrorSpeed">
+                          <property name="font">
+                           <font>
+                            <pointsize>9</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">color: rgb(255, 0, 0);</string>
+                          </property>
+                          <property name="text">
+                           <string>Vui lòng nhập đúng định dạng số</string>
+                          </property>
+                         </widget>
+                        </item>
                        </layout>
                       </item>
                       <item>
@@ -1779,6 +1814,24 @@ QPushButton:pressed {
                         </item>
                         <item>
                          <layout class="QHBoxLayout" name="selectVideoH_4">
+                          <item>
+                           <widget class="QRadioButton" name="rgCutNoChange">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <pointsize>-1</pointsize>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>Giữa nguyên</string>
+                            </property>
+                           </widget>
+                          </item>
                           <item>
                            <widget class="QRadioButton" name="rdCut3sStart">
                             <property name="sizePolicy">
@@ -1880,6 +1933,23 @@ QPushButton:pressed {
                            </widget>
                           </item>
                          </layout>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="lbErrrorCut">
+                          <property name="font">
+                           <font>
+                            <pointsize>9</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">color: rgb(255, 0, 0);</string>
+                          </property>
+                          <property name="text">
+                           <string>Vui lòng nhập đúng định dạng số</string>
+                          </property>
+                         </widget>
                         </item>
                        </layout>
                       </item>
@@ -2025,6 +2095,23 @@ QPushButton:pressed {
                          </layout>
                         </item>
                         <item>
+                         <widget class="QLabel" name="lbErrorFolderSave">
+                          <property name="font">
+                           <font>
+                            <pointsize>9</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">color: rgb(255, 0, 0);</string>
+                          </property>
+                          <property name="text">
+                           <string>Vui lòng nhập đúng định dạng đường dẫn</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
                          <layout class="QGridLayout" name="gridLayout">
                           <property name="topMargin">
                            <number>5</number>
@@ -2080,7 +2167,7 @@ QPushButton:pressed {
                                <string notr="true">margin: 15px 0px 0px 0px</string>
                               </property>
                               <property name="text">
-                               <string>Video phải</string>
+                               <string>Video dưới:</string>
                               </property>
                               <property name="scaledContents">
                                <bool>true</bool>
@@ -2088,9 +2175,26 @@ QPushButton:pressed {
                              </widget>
                             </item>
                             <item>
-                             <widget class="QLineEdit" name="txtRowVideoRight">
+                             <widget class="QLineEdit" name="txtRowVideoDown">
                               <property name="placeholderText">
                                <string>D:\Launcher</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QLabel" name="lbErrorRowRight">
+                              <property name="font">
+                               <font>
+                                <pointsize>9</pointsize>
+                                <weight>75</weight>
+                                <bold>true</bold>
+                               </font>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true">color: rgb(255, 0, 0);</string>
+                              </property>
+                              <property name="text">
+                               <string>Vui lòng nhập đúng định dạng đường dẫn</string>
                               </property>
                              </widget>
                             </item>
@@ -2131,6 +2235,23 @@ QPushButton:pressed {
                               </property>
                              </widget>
                             </item>
+                            <item>
+                             <widget class="QLabel" name="lbErrorErrorRightVideoCollum">
+                              <property name="font">
+                               <font>
+                                <pointsize>9</pointsize>
+                                <weight>75</weight>
+                                <bold>true</bold>
+                               </font>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true">color: rgb(255, 0, 0);</string>
+                              </property>
+                              <property name="text">
+                               <string>Vui lòng nhập đúng định dạng đường dẫn</string>
+                              </property>
+                             </widget>
+                            </item>
                            </layout>
                           </item>
                           <item row="2" column="0">
@@ -2154,7 +2275,7 @@ QPushButton:pressed {
                                <string notr="true">margin: 15px 0px 0px 0px</string>
                               </property>
                               <property name="text">
-                               <string>Video trái:</string>
+                               <string>Video trên:</string>
                               </property>
                               <property name="scaledContents">
                                <bool>true</bool>
@@ -2162,9 +2283,26 @@ QPushButton:pressed {
                              </widget>
                             </item>
                             <item>
-                             <widget class="QLineEdit" name="txtRowVideoLeft">
+                             <widget class="QLineEdit" name="txtRowVideoTop">
                               <property name="placeholderText">
                                <string>D:\Launcher</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QLabel" name="lbErrorRowLeft">
+                              <property name="font">
+                               <font>
+                                <pointsize>9</pointsize>
+                                <weight>75</weight>
+                                <bold>true</bold>
+                               </font>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true">color: rgb(255, 0, 0);</string>
+                              </property>
+                              <property name="text">
+                               <string>Vui lòng nhập đúng định dạng đường dẫn</string>
                               </property>
                              </widget>
                             </item>
@@ -2205,6 +2343,23 @@ QPushButton:pressed {
                               </property>
                              </widget>
                             </item>
+                            <item>
+                             <widget class="QLabel" name="lbErrorErrorLeftVideoCollum">
+                              <property name="font">
+                               <font>
+                                <pointsize>9</pointsize>
+                                <weight>75</weight>
+                                <bold>true</bold>
+                               </font>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true">color: rgb(255, 0, 0);</string>
+                              </property>
+                              <property name="text">
+                               <string>Vui lòng nhập đúng định dạng đường dẫn</string>
+                              </property>
+                             </widget>
+                            </item>
                            </layout>
                           </item>
                           <item row="0" column="1">
@@ -2242,6 +2397,23 @@ QPushButton:pressed {
                               </property>
                              </widget>
                             </item>
+                            <item>
+                             <widget class="QLabel" name="lbErrorOutro">
+                              <property name="font">
+                               <font>
+                                <pointsize>9</pointsize>
+                                <weight>75</weight>
+                                <bold>true</bold>
+                               </font>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true">color: rgb(255, 0, 0);</string>
+                              </property>
+                              <property name="text">
+                               <string>Vui lòng nhập đúng định dạng đường dẫn</string>
+                              </property>
+                             </widget>
+                            </item>
                            </layout>
                           </item>
                           <item row="0" column="0">
@@ -2276,6 +2448,23 @@ QPushButton:pressed {
                              <widget class="QLineEdit" name="txtInto">
                               <property name="placeholderText">
                                <string>D:\Launcher</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QLabel" name="lbErrorIntro">
+                              <property name="font">
+                               <font>
+                                <pointsize>9</pointsize>
+                                <weight>75</weight>
+                                <bold>true</bold>
+                               </font>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true">color: rgb(255, 0, 0);</string>
+                              </property>
+                              <property name="text">
+                               <string>Vui lòng nhập đúng định dạng đường dẫn</string>
                               </property>
                              </widget>
                             </item>
@@ -2686,6 +2875,23 @@ QPushButton:pressed {
                     </layout>
                    </item>
                    <item>
+                    <widget class="QLabel" name="lbErrorBaseColor">
+                     <property name="font">
+                      <font>
+                       <pointsize>9</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color: rgb(255, 0, 0);</string>
+                     </property>
+                     <property name="text">
+                      <string>Vui lòng nhập đúng định dạng số</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
                     <widget class="QLabel" name="label_88">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -2830,6 +3036,23 @@ QPushButton:pressed {
                       </widget>
                      </item>
                     </layout>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="lbErrorAdvColor">
+                     <property name="font">
+                      <font>
+                       <pointsize>9</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color: rgb(255, 0, 0);</string>
+                     </property>
+                     <property name="text">
+                      <string>Vui lòng nhập đúng định dạng số</string>
+                     </property>
+                    </widget>
                    </item>
                    <item>
                     <layout class="QHBoxLayout" name="editColorSaveResetLayout">
@@ -3666,6 +3889,74 @@ QPushButton:pressed {
               </property>
               <property name="text">
                <string>Reset</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnRunWithoutEdit">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+    background-color: rgb(209, 139, 0); /* Màu xanh */
+    color: white;              /* Chữ màu trắng */      
+    font-weight: bold;         /* In đậm */
+    border-radius: 3px;        /* Bo góc */
+    padding: 6px 12px;         /* Khoảng cách lề */
+    border: none;              /* Không viền */
+ padding: 10px 25px 10px 25px; 
+}
+
+/* Khi hover */
+QPushButton:hover {
+    background-color: rgb(145, 97, 0); /* Màu xanh đậm hơn */
+}
+
+/* Khi nhấn */
+QPushButton:pressed {
+    background-color:rgb(90, 60, 0); /* Màu xanh tối hơn khi nhấn */
+}</string>
+              </property>
+              <property name="text">
+               <string>Run without edit</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnRunWithoutDownload">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+    background-color: rgb(70, 141, 211); /* Màu xanh */
+    color: white;              /* Chữ màu trắng */      
+    font-weight: bold;         /* In đậm */
+    border-radius: 3px;        /* Bo góc */
+    padding: 6px 12px;         /* Khoảng cách lề */
+    border: none;              /* Không viền */
+ padding: 10px 25px 10px 25px; 
+}
+
+/* Khi hover */
+QPushButton:hover {
+    background-color: rgb(53, 107, 161); /* Màu xanh đậm hơn */
+}
+
+/* Khi nhấn */
+QPushButton:pressed {
+    background-color:rgb(32, 64, 97); /* Màu xanh tối hơn khi nhấn */
+}</string>
+              </property>
+              <property name="text">
+               <string>Run without download</string>
               </property>
              </widget>
             </item>

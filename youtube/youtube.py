@@ -19,12 +19,15 @@ class Youtube:
     _processDownload = None
     _processError = None
     _processDownloadVideo = None
+
+
     def __init__(self, processInfo, processDownload, processError, processDownloadVideo, API_KEY = "AIzaSyC6XAJGYvbDHiLYFGpv8BpUz9PRSNwIQEA" ):
         self.API_KEY = API_KEY
         self._processInfo = processInfo
         self._processDownload = processDownload
         self._processError = processError
         self._processDownloadVideo = processDownloadVideo
+        self.isStopDownload = False
 
     def GetInfoChannel(self, url, order, from_date, to_date,nextpagetoken):
         try:
@@ -55,8 +58,9 @@ class Youtube:
                 response = requests.get(base_url, params=params)
                 data = response.json()
             except Exception as ex:
-                self._processError("Lỗi tải dữ liệu! kiểm tra lại kết nối Internet", YoutubeStatus.ERROR)
+                self._processError(f"Lỗi tải dữ liệu! kiểm tra lại kết nối Internet: {ex}", ["Youtube","GetInfoChannel"])
                 return None
+            
             filtered_videos = []
             for item in data.get("items", []):
                 video_id = item["id"]["videoId"]
@@ -90,7 +94,7 @@ class Youtube:
             else:
                 return filtered_videos, None
         except Exception as ex:
-            self._processError(str(ex), YoutubeStatus.ERROR)
+            self._processError(str(ex), ["Youtube","GetInfoChannel"])
     
     def GetIdChannel(self,url):
         try:
@@ -113,7 +117,8 @@ class Youtube:
                 self._processError("Không tìm thấy thẻ <link> phù hợp!", YoutubeStatus.ERROR)
                 return None
         except Exception as ex:
-            self._processError(str(ex), YoutubeStatus.ERROR)
+            self._processError(str(ex), ["Youtube","GetIdChannel"])
+            return None
         
     def is_valid_youtube_handle(self,url):
         pattern = r"^https://www\.youtube\.com/@[\w\d_-]+$"
@@ -125,7 +130,7 @@ class Youtube:
             match = re.search(pattern, url)
             return match.group(1) if match else None
         except Exception as ex:
-            self._processError(str(ex), YoutubeStatus.ERROR)
+            self._processError(str(ex), ["Youtube","extract_channel_id"])
             return None
 
     def getTotalVideoChannel(self,url):
@@ -137,7 +142,7 @@ class Youtube:
 
             url = "https://www.googleapis.com/youtube/v3/channels"
             if not CHANNEL_ID:
-                self._processError("Không tìm thấy channel id", YoutubeStatus.ERROR)
+                self._processError("Không tìm thấy channel id", ["Youtube","getTotalVideoChannel"])
                 return -1
             
             params = {
@@ -149,7 +154,7 @@ class Youtube:
                 response = requests.get(url, params=params)
                 data = response.json()
             except Exception as ex:
-                self._processError(str(ex), YoutubeStatus.ERROR)
+                self._processError(str(ex), ["Youtube","getTotalVideoChannel"])
                 return -1
 
             if "items" in data and len(data["items"]) > 0:
@@ -157,10 +162,11 @@ class Youtube:
                 print(f"Tổng số video trên kênh: {video_count}")
                 return int(video_count)
             else:
-                self._processError("Không tìm thấy thông tin kênh!", YoutubeStatus.ERROR)
+                self._processError("Không tìm thấy thông tin kênh!", ["Youtube","getTotalVideoChannel"])
                 return -1
         except Exception as ex:
-            self._processError(str(ex), YoutubeStatus.ERROR)
+            self._processError(str(ex), ["Youtube","getTotalVideoChannel"])
+            return -1
         
     def download_video(self, video,download_folder):
         filename = self.sanitize_filename(video["title"])
@@ -178,26 +184,31 @@ class Youtube:
                 ydl.download([video["video_url"]]) 
                 return True
             except Exception as ex:
-                self._processError(str(ex), YoutubeStatus.ERROR)
-                self._processError("Đang bắt đầu thử tải lại ... ", YoutubeStatus.START)
+                self._processError(str(ex), ["Youtube","download_video"])
+                self._processError("Đang bắt đầu thử tải lại ... ", ["Youtube","download_video"])
                 try:
-                    self.dowload_Video_2(video,download_folder)
+                    self.download_Video_2(video,download_folder)
                     return True
                 except Exception as ex:
-                    self._processError(str(ex), YoutubeStatus.ERROR)
+                    self._processError(str(ex), ["Youtube","download_video"])
                     return False
         
-    def dowload_Video_2(self, video,download_folder):
-        filename = self.sanitize_filename(video["title"])   
-        if not filename:
-            filename = f"filename_{datetime.datetime.now().timestamp()}"
-        yt = YouTube(video["video_url"], on_progress_callback=self.progress_callback)
+    def download_Video_2(self, video,download_folder):
+        try:
+            filename = self.sanitize_filename(video["title"])   
+            if not filename:
+                filename = f"filename_{datetime.datetime.now().timestamp()}"
+            yt = YouTube(video["video_url"], on_progress_callback=self.progress_callback)
 
-        stream = yt.streams.get_highest_resolution()
+            stream = yt.streams.get_highest_resolution()
 
-        stream.download(output_path=download_folder)
+            stream.download(output_path=download_folder)
 
-        print("Tải video thành công!")
+            return True
+        except Exception as ex:
+            self._processError(str(ex), ["Youtube","download_Video_2"])
+            raise ex
+        
     def sanitize_filename(self,title, replacement="-"):
         try:
             sanitized = re.sub(r'[^\w\sÀ-ỹ]', '', title)
@@ -221,9 +232,10 @@ class Youtube:
             elif d['status'] == 'finished':
                 self._processDownloadVideo(0,0,0, 0, YoutubeStatus.DONE)
             elif d['status'] == 'error':
-                self._processDownloadVideo(-1,-1,-1,-1, YoutubeStatus.DONE)
+                self._processDownloadVideo(-1,-1,-1,-1, YoutubeStatus.ERROR)
         except Exception as ex:
-            self._processError(str(ex), YoutubeStatus.ERROR)
+            self._processError(str(ex), ["Youtube","_download_hook"])
+
     def progress_callback(self,stream, chunk, bytes_remaining):
         try:
             total_size = stream.filesize
@@ -233,55 +245,92 @@ class Youtube:
         except Exception as ex:
             self._processError(str(ex), YoutubeStatus.ERROR)
 
-    def run(self, url,count, order, from_date, to_date, download_folder):
+    def run(self, url, setting):
         try:
-            stop = False
-            nextpagetoken = None
-            videos = []
-            self._processInfo(len(videos),YoutubeStatus.START)
+            if setting["type_download"] == "1":
+                stop = False
+                nextpagetoken = None
+                videos = []
+                self._processInfo(len(videos),YoutubeStatus.START)
 
-            if order == "old":
+                order = "date"
                 from_date = None
                 to_date = None
+                if setting["order_download"] == "1":
+                    order = "date"
+                elif setting["order_download"] == "2":
+                    order = "viewCount"
+                elif setting["order_download"] == "3":
+                    order = "date"
+                elif setting["order_download"] == "4":
+                    from_date = datetime.strptime(setting["from_time"], "%d/%m/%Y")
+                    to_date = datetime.strptime(setting["to_time"], "%d/%m/%Y")
+                elif setting["order_download"] == "5":
+                    from_date = datetime.strptime(setting["from_time"], "%d/%m/%Y")
+                    to_date = datetime.strptime(setting["to_time"], "%d/%m/%Y")
+                elif setting["order_download"] == "6":
+                    from_date = datetime.strptime(setting["from_time"], "%d/%m/%Y")
+                    to_date = datetime.strptime(setting["to_time"], "%d/%m/%Y")
 
-            while not stop:
-                filtered_videos, nextpagetoken = self.GetInfoChannel(url,"viewCount" if order == "viewCount" else "date", from_date, to_date , nextpagetoken)
-                videos.extend(filtered_videos)
-                if len(videos) >= count and order != "old":
-                    break
-                self._processInfo(len(videos),YoutubeStatus.PROCESS)
-                time.sleep(random.randint(0,2))
-                if not nextpagetoken:
-                    stop = True
+                count = -1
+                if setting["count_download"] != "":
+                    count = int(setting["count_download"])
 
-            if order == "old" and count>0:
-                videos = videos[-count:]
-            elif order == "old" and count<0:
-                videos = videos[::-1]
+                while not stop:
+                    filtered_videos, nextpagetoken = self.GetInfoChannel(url,order, from_date, to_date , nextpagetoken)
+                    videos.extend(filtered_videos)
+                    if len(videos) >= count and order != "old":
+                        break
+                    self._processInfo(len(videos),YoutubeStatus.PROCESS)
+                    time.sleep(random.randint(0,2))
+                    if not nextpagetoken:
+                        stop = True
+                    if self.isStopDownload:
+                        return
 
-            self._processInfo(len(videos),YoutubeStatus.DONE)
+                if order == "old" and count>0:
+                    videos = videos[-count:]
+                elif order == "old" and count<0:
+                    videos = videos[::-1]
 
-            videoDownload = []
-            videoError = []
+                self._processInfo(len(videos),YoutubeStatus.DONE)
+
+                videoDownload = []
+                videoError = []
 
 
-            if count <0:
-                videos = videos
-            else:
-                videos = videos[0:count]
-                
-            for video in videos:
-                self._processDownload(len(videos),videoDownload,videoError,YoutubeStatus.START)
-                self._processDownload(len(videos),videoDownload,videoError,YoutubeStatus.PROCESS)
-                status = self.download_video(video,download_folder)
-                if status:
-                    videoDownload.append(video)
-                    self._processDownload(len(videos),[video],[],YoutubeStatus.DONE_ONE)
+                if count <0:
+                    videos = videos
                 else:
-                    videoError.append(video)
-                    self._processDownload(len(videos),videoDownload,video,YoutubeStatus.ERROR)
-            self._processDownload(len(videos),videoDownload,videoError,YoutubeStatus.DONE)
+                    videos = videos[0:count]
+                    
+                for video in videos:
+                    if self.isStopDownload:
+                        self._processDownload(len(videos),videoDownload,videoError,YoutubeStatus.DONE)
+                        return
+                    self._processDownload(len(videos),videoDownload,videoError,YoutubeStatus.START)
+                    self._processDownload(len(videos),videoDownload,videoError,YoutubeStatus.PROCESS)
+                    status = self.download_video(video,setting["folder_save_video"])
+                    if status:
+                        videoDownload.append(video)
+                        self._processDownload(len(videos),[video],[],YoutubeStatus.DONE_ONE)
+                    else:
+                        videoError.append(video)
+                        self._processDownload(len(videos),videoDownload,video,YoutubeStatus.ERROR)
+                self._processDownload(len(videos),videoDownload,videoError,YoutubeStatus.DONE)
+
+            elif setting["type_download"] == "2":
+                self._processDownload(1,[],[],YoutubeStatus.START)
+                self._processDownload(1,[],[],YoutubeStatus.PROCESS)
+                filename = f"filename_{datetime.now().timestamp()}"
+                status = self.download_video({"title":filename, "video_url":url},setting["folder_save_video"])
+                if status:
+                    self._processDownload(1,[""],[],YoutubeStatus.DONE)
+                else:
+                    self._processDownload(1,[],[""],YoutubeStatus.ERROR)
         except Exception as ex:
-            self._processError(str(ex), YoutubeStatus.ERROR)
+            self._processError(str(ex), ["Youtube","run"])
+        
+
 
         
