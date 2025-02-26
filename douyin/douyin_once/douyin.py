@@ -4,7 +4,8 @@ from f2.apps.douyin.dl import DouyinDownloader
 from f2.utils.conf_manager import ConfigManager
 from datetime import datetime
 import os
-
+import re
+import requests
 class DouyinStatus:
     START = 0
     PROCESS = 1
@@ -80,32 +81,69 @@ class Douyin:
             "proxies": {"http://": None, "https://": None},
             "mode": "post",
         } | ConfigManager("douyin/douyin_once/conf/app.yaml").get_config("douyin")
+
+
         self._processDownload(len(videos),self.success,self.error,DouyinStatus.START)
         dowloader = DouyinDownloader(kwargs)
         for dem in range(0,len(videos),2):
             try:
                 
                 self._processDownload(len(videos),[videos[dem]],self.error,DouyinStatus.DOUYIN_PROCESS)
-                await dowloader.create_download_tasks(
-                    kwargs,[videos[dem],videos[dem+1]], download_folder
-                )
-                self._processDownload(len(videos),[videos[dem]],self.error,DouyinStatus.DOUYIN_DONE_ONCE)
-                self.success.extend([videos[dem],videos[dem+1]])
+                try:
+                    await dowloader.create_download_tasks(
+                        kwargs,[videos[dem],videos[dem+1]], download_folder
+                    )
+                    self._processDownload(len(videos),[videos[dem]],self.error,DouyinStatus.DOUYIN_DONE_ONCE)
+                    self.success.extend([videos[dem],videos[dem+1]])
+                except Exception as ex:
+                    print(ex)
             except Exception as ex:
                 self.error.extend([videos[dem],videos[dem+1]])
             self._processDownload(len(videos),self.success,self.error,DouyinStatus.PROCESS)
-            
+
+    async def downloadVideoOne(self, id_video, setting):
+        kwargs = {
+            "headers": {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0",
+                "Referer": "https://www.douyin.com/",
+            },
+            "cookie": "YOUR_COOKIE_HERE",
+            "proxies": {"http://": None, "https://": None},
+        } | ConfigManager("douyin/douyin_once/conf/app.yaml").get_config("douyin")      
+        video = await DouyinHandler(kwargs).fetch_one_video(aweme_id=id_video)
+        print("=================_to_raw================")
+        dowloader = DouyinDownloader(kwargs)
+        await dowloader.create_download_tasks(
+            kwargs,[video._to_dict()], setting
+        )
+        self._processDownload(1,[video._to_dict()],self.error,DouyinStatus.DOUYIN_DONE_ONCE)
+        self._processDownload(1,[video._to_dict()],self.error,DouyinStatus.DONE)
+
+    
+
+    def extract_code(url: str):
+        match = re.search(r"https://v\.douyin\.com/([a-zA-Z0-9]+)/", url)
+        return match.group(1) if match else None
+
+    def get_full_video_url(self,short_url: str):
+        response = requests.head(f"https://v.douyin.com/{short_url}", allow_redirects=True)
+        full_url = response.url
+        video_id_match = re.search(r"/video/(\d+)", full_url)
+        return video_id_match.group(1) if video_id_match else None
+    
+    def runOne(self, sec_user_id,setting):
+        id = self.get_full_video_url(sec_user_id)
+        asyncio.run(self.downloadVideoOne(id,setting["folder_save_video"]))
+
     def run(self, sec_user_id,setting):
+        pattern = r"user/(MS4wLj[A-Za-z0-9_-]+)"
+        match = re.search(pattern, sec_user_id)
+        if match:
+            sec_user_id = match.group(1)
         dir_list = os.listdir(setting["folder_save_video"])
         from_date = None
         to_date = None
-        if setting["order_download"] == "1":
-            order = "date"
-        elif setting["order_download"] == "2":
-            order = "viewCount"
-        elif setting["order_download"] == "3":
-            order = "date"
-        elif setting["order_download"] == "4":
+        if setting["order_download"] == "4":
             from_date = datetime.strptime(setting["from_time"], "%d/%m/%Y")
             to_date = datetime.strptime(setting["to_time"], "%d/%m/%Y")
         elif setting["order_download"] == "5":
@@ -117,8 +155,8 @@ class Douyin:
 
         count = -1
         if setting["count_download"] != None and setting["count_download"] != "" :
+            
             count = int(setting["count_download"])
-
         result = asyncio.run(self.getInfo(sec_user_id,count,from_date,to_date))
         if len(result) <=0:
             self._processDownload(0,self.success,self.error,DouyinStatus.DONE)

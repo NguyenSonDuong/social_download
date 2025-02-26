@@ -3,7 +3,7 @@ from PyQt5 import uic
 from youtube.youtube import  Youtube, YoutubeStatus
 from PyQt5.QtGui import QColor, QPainter, QTextCharFormat, QColor, QTextCursor
 from PyQt5.QtCore import Qt, QPoint,QEvent
-from PyQt5.QtWidgets import QButtonGroup ,QFrame, QVBoxLayout,QLabel,QApplication,QCalendarWidget,QPushButton,QFileDialog
+from PyQt5.QtWidgets import QButtonGroup ,QFrame, QVBoxLayout,QLabel,QApplication,QCalendarWidget,QPushButton,QFileDialog,QMessageBox
 import sys
 from PyQt5.QtCore import QThread, pyqtSignal
 from datetime import datetime, timedelta
@@ -15,7 +15,7 @@ from douyin.douyin_once.douyin import Douyin, DouyinStatus
 import logging
 import inspect
 logging.basicConfig(filename="error.log", level=logging.ERROR)
-
+import requests
 
 
 class WorkerThreadYoutube(QThread):
@@ -82,9 +82,9 @@ class WorkerThreadDouyin(QThread):
     processDownload = pyqtSignal(int,list, list, int)
     processError = pyqtSignal(str, int)
     
-    def __init__(self,  id, setting, isEdit = False, isColor = False, isAudio = False):
+    def __init__(self,  url, setting, isEdit = False, isColor = False, isAudio = False):
         super().__init__()
-        self.id = id
+        self.url = url
         self.isEdit = isEdit
         self.isColor = isColor
         self.isAudio = isAudio
@@ -107,7 +107,10 @@ class WorkerThreadDouyin(QThread):
                 self.processDownload.emit,
                 self.processError.emit 
             )
-            douyin.run(self.id,self.setting)
+            if self.setting["type_download"] == "1":
+                douyin.run(self.url,self.setting)
+            else:
+                douyin.runOne(self.url,self.setting)
         if  self.isEdit or  self.isColor or  self.isAudio:
             edit = EditVideo(
                 self.processDownload.emit,
@@ -123,7 +126,6 @@ class WorkerThreadDouyin(QThread):
             success = []
             error = []
             for video in list:
-
                 try:
                     edit.run(video)
                     success.append(video)
@@ -226,6 +228,7 @@ class Ui_HomeWindow(QMainWindow):
     }
 
     _isClick = None
+
     def __init__(self):
         sys.path.append('.')
         super().__init__()
@@ -253,6 +256,8 @@ class Ui_HomeWindow(QMainWindow):
             
             self.overlay.hide_overlay()
             self.overlay.setOverlayGeometry(self.mainLayout) 
+            self.on_radio_checked()
+            self._isClick = self.btnDouyin
         except Exception as ex:
             logging.error(f"FUNCTION: {inspect.currentframe().f_code.co_name} - {ex}")
             raise ex
@@ -261,9 +266,11 @@ class Ui_HomeWindow(QMainWindow):
 
     def validInt(self,text):
         return bool(re.fullmatch(r"-?\d+(\.\d+)?", text))
+ 
     def validPath(self,path):
         pattern = r"^([a-zA-Z]:\\|/)?([\w\s.-]+[/\\]?)+$"
         return bool(re.fullmatch(pattern, path))
+
     def checkValidTextbox(self, type = "Video"):
         try:
 
@@ -388,6 +395,7 @@ class Ui_HomeWindow(QMainWindow):
                 self.rdDownloadFromLink.setChecked(True)
             if self.setting["type_download"] == "3":
                 self.rdFromKey.setChecked(True)
+            
 
             if self.setting["order_download"] == "1":
                 self.rdDownloadNewVideo.setChecked(True)
@@ -413,6 +421,7 @@ class Ui_HomeWindow(QMainWindow):
                 self.txtFolderSaveVideo.setText(self.setting["folder_save_video"])
         except Exception as ex:
             logging.error(f"FUNCTION: {inspect.currentframe().f_code.co_name} - {ex}")
+
     def setupEditVideoSetting(self):
         try:
             if not self.checkValidTextbox("Video"):
@@ -465,6 +474,7 @@ class Ui_HomeWindow(QMainWindow):
         except Exception as ex:
             logging.error(f"FUNCTION: {inspect.currentframe().f_code.co_name} - {ex}")
             raise ex
+
     def setupEditColorSetting(self):
         try:
             if not self.checkValidTextbox("Color"):
@@ -482,6 +492,7 @@ class Ui_HomeWindow(QMainWindow):
         except Exception as ex:
             logging.error(f"FUNCTION: {inspect.currentframe().f_code.co_name} - {ex}")
             raise ex
+ 
     def setupEditAudioSetiing(self):
         try:
             if not self.checkValidTextbox("Audio"):
@@ -499,12 +510,11 @@ class Ui_HomeWindow(QMainWindow):
             logging.error(f"FUNCTION: {inspect.currentframe().f_code.co_name} - {ex}")
             raise ex
 
-
     def setupdSetting(self):
         self.setupDownloadVideoSetting()
         self.setupEditColorSetting()
         self.setupEditVideoSetting()
-        self.setupEditAudioSetiing()
+        self.setupEditAudioSetiing()        
 
     def saveDownloadSetting(self):
         try:
@@ -572,6 +582,7 @@ class Ui_HomeWindow(QMainWindow):
     def is_folder(self,path):
         return os.path.isdir(path)
 
+#Process download
     def log(self, text, color="red"):
         cursor = self.overlay.frame.txtLog.textCursor()
         red_format = QTextCharFormat()
@@ -586,13 +597,20 @@ class Ui_HomeWindow(QMainWindow):
             logging.error(f"FUNCTION: {inspect.currentframe().f_code.co_name} - {ex}")
             raise ex
 
+    def show_notification(self,title, message):
+        msg_box = QMessageBox()
+        msg_box.setWindowTitle(title)
+        msg_box.setText(message)
+        msg_box.exec_()
+ 
     def processDownload(self,total, videoDownload, videoError,status):
         try:
             if status == DouyinStatus.DOUYIN_PROCESS:
                 self.log(f"Đang tải video: {videoDownload[0]['desc']}","blue")
-            if status == DouyinStatus.DONE_ONE:
+            if status == DouyinStatus.DOUYIN_DONE_ONCE:
                 self.log(f"tải xong video: {videoDownload[0]['desc']}","green")
             if status == YoutubeStatus.DONE_ONE:
+                self.log(f"Đã tải xong: {videoDownload[0]["title"]}","green")
                 try:
                     self.log(f"Đã tải xong: {videoDownload[0]["title"]}","green")
                 except Exception as ex:
@@ -602,8 +620,9 @@ class Ui_HomeWindow(QMainWindow):
             if status == YoutubeStatus.PROCESS:
                 self.overlay.frame.pnAllsBar.setMaximum(total)
                 self.overlay.frame.pnAllsBar.setValue(len(videoDownload)+len(videoError))
-                print(f"Đã tải được: {len(videoDownload)} - Video tải lỗi: {len(videoError)} - {status}")
+                self.log(f"Đã tải được: {len(videoDownload)} - Video tải lỗi: {len(videoError)} - {status}","green")
             if status == YoutubeStatus.DONE:
+                self.show_notification("Thông báo", "Đã tải xong tất cả video")
                 self.overlay.hide_overlay()
             if status == YoutubeStatus.ERROR:
                 self.log("Lỗi lấy thông số video! ")
@@ -627,10 +646,40 @@ class Ui_HomeWindow(QMainWindow):
         except Exception as ex:
             logging.error(f"FUNCTION: {inspect.currentframe().f_code.co_name} - {ex}")
             raise ex
+
+# Hàm chạy
+    def CheckLinkYoutube(self, link):
+        youtube_pattern = re.compile(
+            r'^(https?://)?(www\.)?(youtube\.com|youtu\.be)/.+$'
+        )
+        if not bool(youtube_pattern.match(link)):
+            return None
+        youtube_patterns = {
+            "video": r"(watch\?v=|youtu\.be/|embed/|shorts/|live/)",
+            "playlist": r"playlist\?list=",
+            "channel_id": r"channel/UC[\w-]+",
+            "channel_custom": r"(c/|user/|@)[\w-]+"
+        }
+
+        for link_type, pattern in youtube_patterns.items():
+            if re.search(pattern, link):
+                return link_type
+
+        return None
+    def startTaskYoutube(self, url, isDownload = True):
+        #Kiểm tra đường dẫn truyền vào
+        typeLink = self.CheckLinkYoutube(url)
+        if not typeLink:
+            self.lbErrorUrl.show()
+            return
+        if typeLink == "video" and self.setting["type_download"] != "1":
+            self.lbErrorUrl.show()
+            return
+        if typeLink == "channel_id" and self.setting["type_download"] != "2":
+            self.lbErrorUrl.show()
+            return
         
-
-    def startTaskYoutube(self, url,count, order, from_date, to_date, download_folder, isDownload = True):
-
+        self.lbErrorUrl.hide()
         """Khởi chạy tiến trình"""
         if self.isRunEdit:
             if self.threadYoutube  and self.threadYoutube.isRunning():
@@ -649,10 +698,25 @@ class Ui_HomeWindow(QMainWindow):
         self.threadYoutube.processError.connect(self.processError)
         self.overlay.threadYoutube = self.threadYoutube
         self.threadYoutube.isDownload = isDownload
+        self.overlay.show_overlay()
         self.threadYoutube.start()
 
-    def startTaskDouyin(self, url,count, from_date, to_date, download_folder, isDownload = True):
+    def startTaskDouyin(self, url, isDownload = True):
         """Khởi chạy tiến trình"""
+        #Lịc link từ chuỗi truyeenfe vào
+        if self.setting["type_download"] == "2":
+            url = self.getIDPostDouyin(url)
+            if not url:
+                self.lbErrorUrl.show()
+                return
+        else:
+            pattern = r"user/(MS4wLj[A-Za-z0-9_-]+)"
+            match = re.search(pattern, url)
+            if not match:
+                self.lbErrorUrl.show()
+                return
+        self.lbErrorUrl.hide()
+        # Code chạy 
         if self.isRunEdit:
             if self.threadDouyin  and self.threadDouyin.isRunning():
                 self.threadDouyin.wait()
@@ -670,59 +734,40 @@ class Ui_HomeWindow(QMainWindow):
         self.overlay.threadDouyin = self.threadDouyin
         self.threadDouyin.isDownload = isDownload
         self.threadDouyin.start()   
+        self.overlay.show_overlay()
 
     def onBtnRunWithoutEditClick(self,event):
         self.RunMain(False,True)
+
     def onBtnRunWithoutDonloadClick(self,event):
         self.RunMain(True,False)
+
     def onBtnRunClick(self,event):
         self.RunMain(True, True)
         
-        
+    def getIDPostDouyin(self,url: str):
+        match = re.search(r"https://v\.douyin\.com/([a-zA-Z0-9]+)", url)
+        return match.group(1) if match else None 
+    
     def RunMain(self, isRunEdit, isDownload = True):
-
         self.isRunEdit = isRunEdit
+
+
         if self.threadYoutube and self.threadYoutube.isRunning():
             self.overlay.show_overlay()
             return
         
+        if self.threadDouyin and self.threadDouyin.isRunning():
+            self.overlay.show_overlay()
+            return  
+        
         url = self.txtUrl.text()
 
-        if not url or not self.is_valid_url(url):
-            print("Nhập đường dẫn đi")
-            self.lbErrorUrl.show()
-            return
+        # if (not url or not self.is_valid_url(url)) and self.setting["type_download"] == "1":
+        #     self.lbErrorUrl.show()
+        #     return
         
         self.lbErrorUrl.hide()
-
-        if self.txtQuatityDownload.text():
-            quantity = int(self.txtQuatityDownload.text())
-        elif self.rdDownloadAllVideo.isChecked():
-            quantity = -1
-        else:
-            self.lbErrorQuantity.show()
-            return
-        self.lbErrorQuantity.hide()
-
-        if self.rdDownloadNewVideo.isChecked() or self.edDownloadTrending.isChecked() or self.rdDownloadOld.isChecked():
-            from_date = None
-            to_date = None
-        else:    
-            from_date = datetime(1990,1,1)
-            to_date = datetime.now()
-            if self.rdDownloadDate.isChecked():
-                from_date = datetime.now()
-            elif self.rdDownloadWeek.isChecked():
-                from_date = datetime.now() - timedelta(days=7)
-            elif self.rdCustomTime.isChecked():
-                from_date = datetime.strptime(self.txtFromDate.text(),"%d/%m/%Y")
-                to_date = datetime.strptime(self.txtToDate.text(),"%d/%m/%Y")
-
-        order = "date"
-        if self.rdDownloadOld.isChecked():
-            order = "old"
-        elif self.edDownloadTrending.isChecked():
-            order = "viewCount"
 
         folder_download = self.txtFolderSaveVideo.text()
         if not folder_download or not self.is_folder(folder_download):
@@ -730,19 +775,14 @@ class Ui_HomeWindow(QMainWindow):
             return
         self.lbErrorSelectFolder.hide()
         self.saveDownloadSetting()
-        self.overlay.show_overlay()
+        
         if self.typeDownload == "Youtube":
-            self.startTaskYoutube(url,quantity,order,from_date,to_date,folder_download,isDownload)
+            self.startTaskYoutube(url,isDownload)
         if self.typeDownload == "Douyin":
-            pattern = r"user/(MS4wLj[A-Za-z0-9_-]+)"
-            match = re.search(pattern, url)
-            if match:
-                user_id = match.group(1)
-                self.startTaskDouyin(user_id,quantity,from_date,to_date,folder_download,isDownload)
-            else:
-                print("Không tìm thấy User ID")
-                self.log("Không tìm thấy User ID! vui lòng kiểm tra lại đường dẫn")
-                self.lbErrorUrl.show()
+            self.startTaskDouyin(url,isDownload)
+
+
+#cài layout
     def setupLayout(self):
         self.louMain.setAlignment(Qt.AlignTop)
 
@@ -872,10 +912,24 @@ class Ui_HomeWindow(QMainWindow):
         self.setupShadowsForTheme()
         self.setupGroupCheckbox()
         
+        self.setEventForHome()
+
+        self.loadSettingFromFile()
+        self.setupdSetting()
+
+        shadow = QGraphicsDropShadowEffect(self.btnDouyin)
+        shadow.setBlurRadius(15)  
+        shadow.setOffset(3, 3)  
+        shadow.setColor(QColor(0, 0, 0, 100)) 
+        self.btnDouyin.setGraphicsEffect(shadow)
+
+        self.errorNotifi()
+        self.show()
+        
+    def setEventForHome(self):
         self.btnRun.clicked.connect(self.onBtnRunClick)
         self.btnRunWithoutEdit.clicked.connect(self.onBtnRunWithoutEditClick)
         self.btnRunWithoutDownload.clicked.connect(self.onBtnRunWithoutDonloadClick)
-
 
         self.btnSelectFolder.clicked.connect(self.onBtnSelectFolderClick)
         self.btnSelectFolderSaveEdit.clicked.connect(self.onBtnSelectFolderSaveEditClick)
@@ -888,19 +942,37 @@ class Ui_HomeWindow(QMainWindow):
         self.btnEditVideo.clicked.connect(self.onBtnEditVideoClick)
         self.btnEditColor.clicked.connect(self.onBtnSaveEditColorClick)
         self.btnEditAudio.clicked.connect(self.onBtnEditAudioClick)
-        
+
+        self.rdFullChannel.toggled.connect(self.on_radio_checked)
+        self.rdDownloadFromLink.toggled.connect(self.on_radio_checked)
+
+    def on_radio_checked(self):
+        # Kiểm tra nút nào đang được chọn
+        if self.typeDownload == "Youtube":
+            self.rdDownloadOld.show()
+            if self.rdFullChannel.isChecked():
+                self.layoutOrder.show()
+                self.lauoutQuantity.show()
+                self.txtUrl.setPlaceholderText("https://www.youtube.com/...")
+            elif self.rdDownloadFromLink.isChecked():
+                self.layoutOrder.hide()
+                self.lauoutQuantity.hide()
+                self.txtUrl.setPlaceholderText("https://www.youtube.com/watch?v=...")
+        elif self.typeDownload == "Douyin":
+            self.rdDownloadOld.hide()
+            if self.rdFullChannel.isChecked():
+                self.layoutOrder.show()
+                self.lauoutQuantity.show()
+                self.txtUrl.setPlaceholderText("https://douyin.com/user/...")
+            elif self.rdDownloadFromLink.isChecked():
+                self.layoutOrder.hide()
+                self.lauoutQuantity.hide()
+                self.txtUrl.setPlaceholderText("https://v.douyin.com/...")
+
+    def errorNotifi(self):
         self.lbErrorUrl.hide()
         self.lbErrorQuantity.hide()
         self.lbErrorSelectFolder.hide()
-        self.loadSettingFromFile()
-        self.setupdSetting()
-
-        shadow = QGraphicsDropShadowEffect(self.btnDouyin)
-        shadow.setBlurRadius(15)  
-        shadow.setOffset(3, 3)  
-        shadow.setColor(QColor(0, 0, 0, 100)) 
-        self.btnDouyin.setGraphicsEffect(shadow)  
-
         if self.isEditVideo:
             self.editMainLayout.show()
         else:
@@ -913,11 +985,9 @@ class Ui_HomeWindow(QMainWindow):
             self.editAudioMainLayout.show()
         else:
             self.editAudioMainLayout.hide()
-
         self.lbErrorSpeed.hide()
         self.lbErrrorCut.hide()
         self.lbErrorFolderSave.hide()
-
         self.lbErrorIntro.hide()
         self.lbErrorOutro.hide()
         self.lbErrorRowLeft.hide()
@@ -927,14 +997,14 @@ class Ui_HomeWindow(QMainWindow):
         self.lbErrorBaseColor.hide()
         self.lbErrorAdvColor.hide()
 
-        self.show()
-
     def onBtnSaveEditVideoClick(self):
         self.saveEditVideoSetting()
         self.saveSettingToFile()
+
     def onBtnEditColorVideoClick(self):
         self.saveEditColorSetting()
         self.saveSettingToFile()
+
     def onBtnSaveAudioSettingClick(self):
         self.saveEditAudioSetting()
         self.saveSettingToFile()
@@ -985,7 +1055,7 @@ class Ui_HomeWindow(QMainWindow):
         self.txtToDate.setEnabled(self.rdCustomTime.isChecked())
 
     def onBtnSelectFolderClick(self,event):
-        folder_path = QFileDialog.getExistingDirectory(self, "Chọn thư mục", "")
+        folder_path = QFileDialog.getExistingDirectory(self, "Chọn thư mục", "D:/")
         
         if folder_path:  # Nếu người dùng chọn thư mục
             self.txtFolderSaveVideo.setText(f"{folder_path}")
@@ -1051,10 +1121,12 @@ class Ui_HomeWindow(QMainWindow):
                 self._isClick = obj
                 if obj == self.btnDouyin:
                     self.typeDownload = "Douyin"
+                    self.txtUrl.setPlaceholderText("https://www.douyin.com/user/...")
                     self.rdDownloadOld.setEnabled(False)
                     self.rdDownloadOld.setChecked(False)
                 if obj == self.btnYoutube:
                     self.typeDownload = "Youtube"
+                    self.txtUrl.setPlaceholderText("https://www.youtube.com/...")
                     self.rdDownloadOld.setEnabled(True)
         
         if obj == self.txtFromDate and event.type() == QEvent.MouseButtonPress:
